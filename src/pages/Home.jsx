@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HeroImage from "../components/home/HeroImage";
 import InfoRow from "../components/home/infoRow/InfoRow";
 import PricingRow from "../components/home/pricingRow/PricingRow";

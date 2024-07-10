@@ -8,12 +8,12 @@ function Layout() {
   return (
     <div>
       <Navbar />
-      <div className="grid grid-cols-[128px_1fr]">
-        <Sidebar />
-        <div>
-          <Outlet />
-        </div>
+      {/* <div className="grid grid-cols-[128px_1fr]">
+        <Sidebar /> */}
+      <div>
+        <Outlet />
       </div>
+      {/* </div> */}
       <Footer />
     </div>
   );
