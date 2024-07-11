@@ -1,17 +1,26 @@
 import React from "react";
+import emailjs from "@emailjs/browser";
 
 function ContactForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const data = {
-      name: e.target["name"].value,
-      email: e.target["email"].value,
-      subject: e.target["subject"].value,
-      message: e.target["message"].value,
-    };
-
-    console.log("data", data);
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
+        e.target,
+        {
+          publicKey: process.env.REACT_APP_PUBLIC_KEY,
+        }
+      )
+      .then(() => {
+        alert("SUCCESS!");
+        e.target.reset();
+      })
+      .catch((error) => {
+        alert("FAILED...", error.text);
+      });
   }
 
   return (
