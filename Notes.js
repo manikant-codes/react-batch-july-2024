@@ -30,3 +30,12 @@
 // Common Layout
 // ----------------------------------------------------------------
 // Agar common layout rakhna hoo to fir <Routes></Routes> ke baad <Route></Route> component ke andar baki ke routes rakhne hain.
+
+// State
+// ----------------------------------------------------------------
+
+// State ek variable hai jiske change hone pe react us component ko upadate kardeta hai jisme wo state variable hoo.
+// State variable banane ke liye ham useState hook ka use karenge.
+// useState() ko call karne pe ye hame ek array deta hai.
+// Is array me do elements hote hain, 0 index pe aapki state value hoti hai aur dusre index pe is state value ko change karne ka function hoota hai.
+// Is function ka use karke state ko update karoge to component/ui update hooga warna nahi.
