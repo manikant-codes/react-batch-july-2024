@@ -11,6 +11,14 @@ function Gallery(props) {
     setIsOpen(!isOpen);
   }
 
+  function nextImg() {
+    if (activeIndex < images[props.activeTab].length - 1) {
+      setActiveIndex(activeIndex + 1);
+    } else {
+      setActiveIndex(0);
+    }
+  }
+
   function handleImageClick(index) {
     setActiveIndex(index);
     toggleModal();
@@ -36,6 +44,7 @@ function Gallery(props) {
           toggleModal={toggleModal}
           images={images[props.activeTab]}
           activeIndex={activeIndex}
+          nextImg={nextImg}
         />
       )}
     </div>

@@ -9,7 +9,7 @@ const workTabs = [
 
 function WorkNav(props) {
   return (
-    <ul className="flex items-center justify-center gap-4 mt-8">
+    <ul className="flex flex-wrap w-full items-center justify-center gap-4 mt-8">
       {workTabs.map((tab) => {
         return (
           <li

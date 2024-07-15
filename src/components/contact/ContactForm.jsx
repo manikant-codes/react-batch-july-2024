@@ -28,7 +28,7 @@ function ContactForm() {
       className="flex flex-col gap-4 shadow-md p-4 rounded-lg border border-indigo-200 border-t-4 border-t-indigo-500"
       onSubmit={handleSubmit}
     >
-      <div className="flex gap-4 w-full">
+      <div className="flex flex-wrap gap-4 w-full">
         <div className="flex flex-col grow-[1]">
           <label htmlFor="name">Name</label>
           <input

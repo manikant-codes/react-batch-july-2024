@@ -2,30 +2,30 @@ import React from "react";
 import Title from "../../common/Title";
 import ProgressBar from "./ProgressBar";
 
-function ProgressRow() {
-  const row = [
-    {
-      title: "HTML",
-      percentage: 90,
-    },
-    {
-      title: "JS",
-      percentage: 80,
-    },
-    {
-      title: "CSS",
-      percentage: 70,
-    },
-    {
-      title: "REACT",
-      percentage: 60,
-    },
-  ];
+const row = [
+  {
+    title: "HTML",
+    percentage: 90,
+  },
+  {
+    title: "JS",
+    percentage: 80,
+  },
+  {
+    title: "CSS",
+    percentage: 70,
+  },
+  {
+    title: "REACT",
+    percentage: 60,
+  },
+];
 
+function ProgressRow() {
   return (
     <div className="p-8">
       <Title title="Progress" />
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
           <img
             src="https://bootstrapmade.com/demo/templates/Arsha/assets/img/skills.png"
@@ -41,10 +41,6 @@ function ProgressRow() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <div className="flex flex-col gap-4">
-            {/* <ProgressBar title="HTML" percentage={100} />
-            <ProgressBar title="CSS" percentage={70} />
-            <ProgressBar title="JS" percentage={60} />
-            <ProgressBar title="React" percentage={50} /> */}
             {row.map((value, index) => {
               return (
                 <ProgressBar

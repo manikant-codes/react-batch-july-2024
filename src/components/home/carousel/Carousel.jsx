@@ -10,14 +10,14 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: true,
+  // autoplay: true,
   pauseOnHover: false,
 };
 
 function Carousel(props) {
   return (
-    <div className="relative h-[calc(100vh-88px)] overflow-hidden">
-      <div className="absolute top-[50%] left-[50%] text-white z-[100] translate-x-[-50%] translate-y-[-50%]">
+    <div className="relative h-[calc(80vh-88px)] lg:h-[calc(100vh-88px)] overflow-hidden">
+      <div className="absolute w-full p-8 top-[50%] left-[50%] text-white z-[100] translate-x-[-50%] translate-y-[-50%]">
         <h2 className="text-6xl mb-4">{props.title}</h2>
         <p className="text-lg">{props.desc}</p>
       </div>
