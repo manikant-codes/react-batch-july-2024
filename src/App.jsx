@@ -4,16 +4,18 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Work from "./pages/Work";
 import Layout from "./layouts/Layout";
+import FAQs from "./pages/FAQs";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/work" element={<Work />} />
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="work" element={<Work />} />
+          <Route path="faqs" element={<FAQs />} />
         </Route>
       </Routes>
     </BrowserRouter>
