@@ -1,21 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@keyframes mybounce {
-  0% {
-    top: 50%;
-  }
-  100% {
-    top: 45%;
-  }
-}
-
-@keyframes myscale {
-  0% {
-    scale: 0;
-  }
-  100% {
-    scale: 100%;
-  }
-}
