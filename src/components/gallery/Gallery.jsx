@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const app = [
   {
@@ -54,10 +54,10 @@ const images = {
   4: web,
 };
 
-function Gallery() {
+function Gallery(props) {
   return (
     <div className="grid grid-cols-4 gap-4 mt-8">
-      {all.map((value) => {
+      {images[props.activeTab].map((value) => {
         return (
           <div
             key={value.id}

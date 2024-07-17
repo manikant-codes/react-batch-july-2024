@@ -7,17 +7,24 @@ const tabs = [
   { id: 4, name: "Web" },
 ];
 
-function Tabs() {
+function Tabs(props) {
   return (
     <div>
       <ul className="flex gap-4 justify-center">
-        {tabs.map((value) => {
+        {tabs.map((tab) => {
           return (
             <li
-              key={value.id}
-              className="cursor-pointer bg-indigo-300 hover:bg-indigo-500 hover:text-white py-2 px-4 rounded-[32px]"
+              key={tab.id}
+              className={`cursor-pointer ${
+                props.activeTab === tab.id
+                  ? "bg-indigo-500 text-white"
+                  : "bg-indigo-300 text-black"
+              }  hover:bg-indigo-500 hover:text-white py-2 px-4 rounded-[32px]`}
+              onClick={function () {
+                props.handleTabClick(tab.id);
+              }}
             >
-              {value.name}
+              {tab.name}
             </li>
           );
         })}
