@@ -1,5 +1,14 @@
 import React from "react";
 
+const team = [
+  {
+    name: "",
+    designation: "",
+    desc: "",
+    socials: [{ twitter: "", facebook: "", instagram: "", linkedin: "" }],
+  },
+];
+
 function About() {
   return (
     <div>
