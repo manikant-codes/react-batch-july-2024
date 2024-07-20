@@ -1,24 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "./layouts/Layout";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import FAQs from "./pages/FAQs";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import React from "react";
+import Student from "./Student";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="faqs" element={<FAQs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <Student name="John Doe" age={32} address={{ city: "New York" }} />
+      <Student name="Jenny Wilson" age={28} address={{ city: "Houston" }} />
+      <Student name="Marry Miller" age={42} />
+    </div>
   );
 }
 
