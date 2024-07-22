@@ -8,7 +8,7 @@ function Home() {
   const [chapters, setChapters] = useState(null);
 
   if (!chapters) {
-    const data = getAllChapters().then((data) => {
+    getAllChapters().then((data) => {
       setChapters(data);
     });
   }
