@@ -37,3 +37,22 @@ export function getSingleChapter(id) {
       console.log("Error: ", error);
     });
 }
+
+export function getAllVerses(chapterId) {
+  return fetch(
+    `https://bhagavad-gita3.p.rapidapi.com/v2/chapters/${chapterId}/verses/`,
+    {
+      method: "GET",
+      headers: {
+        "x-rapidapi-key": "fa01877758msh83537b5a81e1c29p16d732jsnab8ca9c33787",
+        "x-rapidapi-host": "bhagavad-gita3.p.rapidapi.com",
+      },
+    }
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .catch((error) => {
+      console.log("Error: ", error);
+    });
+}

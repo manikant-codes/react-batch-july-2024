@@ -16,14 +16,14 @@ function ChapterSummary() {
   if (!chapter) return null;
 
   return (
-    <div className="flex flex-col">
+    <div className="max-w-4xl flex flex-col mx-auto">
       <p className="text-lg font-semibold text-[#f57903] text-center">
         CHAPTER {chapter.chapter_number}
       </p>
       <h3 className="mt-2 mb-8 text-3xl font-bold text-center">
         {chapter.name_translated}
       </h3>
-      <p className="max-w-4xl text-lg mx-auto">{chapter.chapter_summary}</p>
+      <p className="text-lg mx-auto">{chapter.chapter_summary}</p>
     </div>
   );
 }

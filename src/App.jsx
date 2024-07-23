@@ -6,6 +6,7 @@ import FAQs from "./pages/FAQs";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Chapter from "./pages/Chapter";
+import Verse from "./pages/Verse";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="chapter/:id" element={<Chapter />} />
+          <Route path="chapter/:chapterId/verse/:verseId" element={<Verse />} />
           <Route path="about" element={<About />} />
           <Route path="faqs" element={<FAQs />} />
           <Route path="contact" element={<Contact />} />
