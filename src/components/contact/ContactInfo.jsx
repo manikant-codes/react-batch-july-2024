@@ -49,6 +49,19 @@ function ContactInfo() {
           );
         })}
       </div>
+      <div>
+        <div id="embedded-map-display">
+          <iframe
+            style={{
+              height: "300px",
+              borderRadius: "8px",
+              marginTop: "16px",
+            }}
+            frameborder="0"
+            src="https://www.google.com/maps/embed/v1/place?q=lope+multimedia+institute,+yogi+chowk,+surat,+gujarat,+india&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+          ></iframe>
+        </div>
+      </div>
     </div>
   );
 }
