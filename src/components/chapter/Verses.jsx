@@ -19,8 +19,6 @@ function Verses() {
 
   if (!verses) return null;
 
-  console.log("verses", verses);
-
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mt-8 py-4 border-t border-b">
