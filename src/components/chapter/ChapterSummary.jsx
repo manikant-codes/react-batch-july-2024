@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getSingleChapter } from "../../services/apiServices";
 import { useParams } from "react-router-dom";
+import Loading from "../common/Loading";
 
 function ChapterSummary() {
   const [chapter, setChapter] = useState(null);
   const params = useParams();
-  console.log(params);
 
-  if (!chapter) {
+  useEffect(() => {
     getSingleChapter(params.id).then((data) => {
       setChapter(data);
     });
-  }
+  }, [params.id]);
 
-  if (!chapter) return null;
+  if (!chapter)
+    return (
+      <>
+        <Loading />
+      </>
+    );
 
   return (
     <div className="max-w-4xl flex flex-col mx-auto">

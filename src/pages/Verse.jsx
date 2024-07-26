@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleVerse } from "../services/apiServices";
 import { numberOfVerses } from "../data/data";
+import Loading from "../components/common/Loading";
 
 function Verse() {
   const params = useParams();
-  const [verseId, setVerseId] = useState(params.verseId);
   const [verse, setVerse] = useState(null);
 
-  if (!verse) {
+  useEffect(() => {
     getSingleVerse(params.chapterId, params.verseId).then((data) => {
       setVerse(data);
     });
-  }
+  }, [params.chapterId, params.verseId]);
 
-  if (!verse) return null;
+  if (!verse) return <Loading />;
 
   const englishTranslation = verse.translations.find((value) => {
     if (value.language === "english") {

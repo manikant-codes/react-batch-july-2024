@@ -1,23 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAllVerses } from "../../services/apiServices";
 import { useNavigate, useParams } from "react-router-dom";
+import Loading from "../common/Loading";
 
 function Verses() {
   const [verses, setVerses] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
 
-  if (!verses) {
+  useEffect(() => {
     getAllVerses(params.id).then((data) => {
       setVerses(data);
     });
-  }
+  }, [params.id]);
 
   function goToVerseDetails(verseId) {
     navigate(`/chapter/${params.id}/verse/${verseId}`);
   }
 
-  if (!verses) return null;
+  if (!verses)
+    return (
+      <>
+        <Loading />
+      </>
+    );
 
   return (
     <div className="max-w-4xl mx-auto">

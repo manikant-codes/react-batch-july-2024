@@ -7,12 +7,14 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Chapter from "./pages/Chapter";
 import Verse from "./pages/Verse";
+// import UseEffectDemo from "./components/demo/UseEffectDemo";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
+          {/* <Route index element={<UseEffectDemo />} /> */}
           <Route index element={<Home />} />
           <Route path="chapter/:id" element={<Chapter />} />
           <Route path="chapter/:chapterId/verse/:verseId" element={<Verse />} />
