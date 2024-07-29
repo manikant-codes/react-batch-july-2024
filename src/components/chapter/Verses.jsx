@@ -14,8 +14,8 @@ function Verses() {
     });
   }, [params.id]);
 
-  function goToVerseDetails(verseId) {
-    navigate(`/chapter/${params.id}/verse/${verseId}`);
+  function goToVerseDetails(verse_number) {
+    navigate(`/chapter/${params.id}/verse/${verse_number}`);
   }
 
   if (!verses)
@@ -40,7 +40,7 @@ function Verses() {
               <li
                 className="flex items-center gap-8 border-b py-4 cursor-pointer"
                 onClick={() => {
-                  goToVerseDetails(verse.id);
+                  goToVerseDetails(verse.verse_number);
                 }}
               >
                 <p className="text-[#f57903] shrink-0">
