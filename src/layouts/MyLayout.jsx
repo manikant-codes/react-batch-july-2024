@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "./MyNavbar";
+import Footer from "./MyFooter";
 import { Outlet } from "react-router-dom";
 
-function Layout() {
+function MyLayout() {
   return (
     <>
       <Navbar />
@@ -13,4 +13,4 @@ function Layout() {
   );
 }
 
-export default Layout;
+export default MyLayout;
