@@ -29,7 +29,13 @@ function MyNavbar() {
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
-          <Button pill size="sm" className="" onClick={toggleOpen}>
+          <Button
+            pill
+            size="sm"
+            className=""
+            color="primary"
+            onClick={toggleOpen}
+          >
             <span className="flex items-center gap-1">
               <HiShoppingCart className="w-4 h-4" />
               <span>Cart</span>
