@@ -9,7 +9,7 @@ const links = [
 
 function Navbar() {
   return (
-    <nav className="px-8 py-4 flex items-center justify-between shadow-md">
+    <nav className="px-8 py-4 flex items-center justify-between shadow">
       <h1 className="text-3xl font-bold">Bhagavad Gita</h1>
       <ul className="flex gap-8">
         {links.map(function (value, index, array) {
