@@ -24,16 +24,16 @@ function ProductDetails() {
           className="h-full w-full object-contain border border-slate-300 p-8 rounded-lg"
         />
       </div>
-      <div>
-        <h3>{product.title}</h3>
-        <div>
+      <div className="flex flex-col gap-2">
+        <h3 className="text-2xl">{product.title}</h3>
+        <div className="flex gap-4">
           <p>Rating: {product.rating.rate}</p>
           <p>Number of Reviews: {product.rating.count}</p>
         </div>
         <div>
-          <p>${product.price}</p>
+          <p className="text-2xl font-bold">${product.price}</p>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 mt-8">
           <Button pill color="primary">
             Add to Cart
           </Button>

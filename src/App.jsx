@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import { Flowbite } from "flowbite-react";
 import { text } from "@fortawesome/fontawesome-svg-core";
 import ProductDetails from "./pages/ProductDetails";
+import { useState } from "react";
 
 function App() {
   const customTheme = {
@@ -31,14 +32,20 @@ function App() {
       },
     },
   };
+  const [cart, setCart] = useState([]);
+
+  console.log(cart);
 
   return (
     <Flowbite theme={{ theme: customTheme }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
+          <Route path="/" element={<Layout cart={cart} setCart={setCart} />}>
+            <Route index element={<Home cart={cart} setCart={setCart} />} />
+            <Route
+              path="/products/:id"
+              element={<ProductDetails cart={cart} setCart={setCart} />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>
