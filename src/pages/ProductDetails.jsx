@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleProduct } from "../services/apiServices";
 
-function ProductDetails() {
+function ProductDetails({ cart, setCart }) {
   const params = useParams();
   const [product, setProduct] = useState(null);
 
@@ -12,6 +12,28 @@ function ProductDetails() {
       setProduct(data);
     });
   }, []);
+
+  function handleAddToCart(e) {
+    e.stopPropagation();
+    const foundProduct = cart.find((value) => {
+      if (value.id === product.id) {
+        return true;
+      }
+      return false;
+    });
+
+    if (foundProduct) {
+      const updatedCart = cart.map((value) => {
+        if (value.id === foundProduct.id) {
+          return { ...value, qty: value.qty + 1 };
+        }
+        return value;
+      });
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
+    }
+  }
 
   if (!product) return null;
 
@@ -34,7 +56,7 @@ function ProductDetails() {
           <p className="text-2xl font-bold">${product.price}</p>
         </div>
         <div className="flex items-center gap-4 mt-8">
-          <Button pill color="primary">
+          <Button pill color="primary" onClick={handleAddToCart}>
             Add to Cart
           </Button>
           <Button pill color="primary">

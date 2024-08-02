@@ -12,7 +12,24 @@ function ProductCard({ product, cart, setCart }) {
 
   function handleAddToCart(e) {
     e.stopPropagation();
-    setCart([...cart, product]);
+    const foundProduct = cart.find((value) => {
+      if (value.id === product.id) {
+        return true;
+      }
+      return false;
+    });
+
+    if (foundProduct) {
+      const updatedCart = cart.map((value) => {
+        if (value.id === foundProduct.id) {
+          return { ...value, qty: value.qty + 1 };
+        }
+        return value;
+      });
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
+    }
   }
 
   return (

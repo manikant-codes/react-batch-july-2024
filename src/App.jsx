@@ -34,8 +34,6 @@ function App() {
   };
   const [cart, setCart] = useState([]);
 
-  console.log(cart);
-
   return (
     <Flowbite theme={{ theme: customTheme }}>
       <BrowserRouter>
