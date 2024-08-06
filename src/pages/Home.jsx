@@ -1,9 +1,12 @@
 import React from "react";
-import Navbar from "../layouts/Navbar";
-import Footer from "../layouts/Footer";
+import Chapters from "../components/home/Chapters";
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Chapters />
+    </div>
+  );
 }
 
 export default Home;
