@@ -1,10 +1,9 @@
+import { Flowbite } from "flowbite-react";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./layouts/MyLayout";
 import Home from "./pages/Home";
-import { Flowbite } from "flowbite-react";
-import { text } from "@fortawesome/fontawesome-svg-core";
 import ProductDetails from "./pages/ProductDetails";
-import { useState } from "react";
 
 function App() {
   const customTheme = {
@@ -32,6 +31,7 @@ function App() {
       },
     },
   };
+
   const [cart, setCart] = useState([]);
 
   return (

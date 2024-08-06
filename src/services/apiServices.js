@@ -1,5 +1,5 @@
-export function getAllProducts() {
-  return fetch("https://fakestoreapi.com/products")
+export function getAllProducts(sortOrder) {
+  return fetch(`https://fakestoreapi.com/products?sort=${sortOrder}`)
     .then((response) => {
       return response.json();
     })
