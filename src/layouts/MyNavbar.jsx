@@ -1,9 +1,7 @@
 import { Button, Navbar, NavbarLink } from "flowbite-react";
-import { HiShoppingCart } from "react-icons/hi";
 import React, { useState } from "react";
+import { HiShoppingCart } from "react-icons/hi";
 import { Link } from "react-router-dom";
-import { COMPANY_NAME, LOGO } from "../consts/consts";
-import CartDrawer from "./CartDrawer";
 
 const links = [
   { link: "/", text: "Home" },
@@ -12,7 +10,7 @@ const links = [
   { link: "/contact", text: "Contact" },
 ];
 
-function MyNavbar({ cart, setCart }) {
+function MyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleOpen() {
@@ -23,9 +21,8 @@ function MyNavbar({ cart, setCart }) {
     <>
       <Navbar fluid rounded>
         <Navbar.Brand href="https://flowbite-react.com">
-          <img src={LOGO} className="mr-3 h-6 sm:h-9" alt={COMPANY_NAME} />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            {COMPANY_NAME}
+            React
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
@@ -53,12 +50,6 @@ function MyNavbar({ cart, setCart }) {
           })}
         </Navbar.Collapse>
       </Navbar>
-      <CartDrawer
-        isOpen={isOpen}
-        toggleOpen={toggleOpen}
-        cart={cart}
-        setCart={setCart}
-      />
     </>
   );
 }

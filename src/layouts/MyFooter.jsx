@@ -1,5 +1,5 @@
 import React from "react";
-import { COMPANY_NAME, LOGO } from "../consts/consts";
+
 import { Footer } from "flowbite-react";
 
 function MyFooter() {
@@ -7,12 +7,6 @@ function MyFooter() {
     <Footer container>
       <div className="w-full text-center">
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
-          <Footer.Brand
-            href="/"
-            src={LOGO}
-            alt={COMPANY_NAME}
-            name={COMPANY_NAME}
-          />
           <Footer.LinkGroup>
             <Footer.Link href="#">About</Footer.Link>
             <Footer.Link href="#">Privacy Policy</Footer.Link>
@@ -21,7 +15,7 @@ function MyFooter() {
           </Footer.LinkGroup>
         </div>
         <Footer.Divider />
-        <Footer.Copyright href="#" by={COMPANY_NAME} year={2022} />
+        <Footer.Copyright href="#" by="React" year={2022} />
       </div>
     </Footer>
   );

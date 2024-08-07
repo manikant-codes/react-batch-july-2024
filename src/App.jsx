@@ -1,9 +1,7 @@
 import { Flowbite } from "flowbite-react";
-import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./layouts/MyLayout";
 import Home from "./pages/Home";
-import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   const customTheme = {
@@ -32,18 +30,12 @@ function App() {
     },
   };
 
-  const [cart, setCart] = useState([]);
-
   return (
     <Flowbite theme={{ theme: customTheme }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout cart={cart} setCart={setCart} />}>
-            <Route index element={<Home cart={cart} setCart={setCart} />} />
-            <Route
-              path="/products/:id"
-              element={<ProductDetails cart={cart} setCart={setCart} />}
-            />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
           </Route>
         </Routes>
       </BrowserRouter>
