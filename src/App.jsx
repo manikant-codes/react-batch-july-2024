@@ -4,6 +4,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Layout from "./layouts/Layout";
 import ChapterDetails from "./pages/ChapterDetails";
+import VerseDetails from "./pages/VerseDetails";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="chapter/:id" element={<ChapterDetails />} />
+          <Route
+            path="chapter/:chapterId/verse/:verseId"
+            element={<VerseDetails />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

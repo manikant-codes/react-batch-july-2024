@@ -6,10 +6,11 @@ function ChapterSummary() {
   const [chapter, setChapter] = useState(null);
   const params = useParams();
 
+  console.log("params", params);
+
   if (!chapter) {
     getSingleChapter(params.id).then((data) => {
       setChapter(data);
-      console.log("data", data);
     });
   }
 
