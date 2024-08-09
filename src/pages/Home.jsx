@@ -1,10 +1,10 @@
 import React from "react";
-import Memo from "../components/memo/Memo";
+import UseRefDemo from "../components/useRef/UseRefDemo";
 
 function Home() {
   return (
     <div className="p-8">
-      <Memo />
+      <UseRefDemo />
     </div>
   );
 }
