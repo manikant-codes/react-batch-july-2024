@@ -19,7 +19,7 @@ export const customTheme = {
   },
   button: {
     color: {
-      primary: "bg-orange-500 hover:bg-orange-600 text-white",
+      primary: "bg-primary hover:bg-primary-dark text-white",
     },
   },
 };
