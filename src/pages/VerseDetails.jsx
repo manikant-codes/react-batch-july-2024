@@ -30,9 +30,11 @@ function VerseDetails() {
   });
 
   function getNextLink() {
+    // Abhi jo shlok hai wo us chapter ke total shlok se kam hai ya nahi.
     if (params.verseId < verseCount[params.chapterId]) {
       return `/chapter/${params.chapterId}/verse/${Number(params.verseId) + 1}`;
     } else {
+      // Current chapter total chapter se kam hai ya nahi.
       if (params.chapterId < 18) {
         return `/chapter/${Number(params.chapterId) + 1}/verse/1`;
       } else {
