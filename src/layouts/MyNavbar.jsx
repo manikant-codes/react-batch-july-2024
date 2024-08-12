@@ -12,7 +12,7 @@ const links = [
   { link: "/contact", text: "Contact" },
 ];
 
-function MyNavbar({ cart, setCart }) {
+function MyNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleOpen() {
@@ -53,12 +53,7 @@ function MyNavbar({ cart, setCart }) {
           })}
         </Navbar.Collapse>
       </Navbar>
-      <CartDrawer
-        isOpen={isOpen}
-        toggleOpen={toggleOpen}
-        cart={cart}
-        setCart={setCart}
-      />
+      <CartDrawer isOpen={isOpen} toggleOpen={toggleOpen} />
     </>
   );
 }

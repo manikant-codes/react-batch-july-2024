@@ -7,7 +7,7 @@ import {
   getCategoryProducts,
 } from "../services/apiServices";
 
-function Home({ cart, setCart }) {
+function Home() {
   const [products, setProducts] = useState(null);
   const [categories, setCategories] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -83,14 +83,7 @@ function Home({ cart, setCart }) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
           {products.map((value) => {
-            return (
-              <ProductCard
-                key={value.id}
-                product={value}
-                cart={cart}
-                setCart={setCart}
-              />
-            );
+            return <ProductCard key={value.id} product={value} />;
           })}
         </div>
       </div>

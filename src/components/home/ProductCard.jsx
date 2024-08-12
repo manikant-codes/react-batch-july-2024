@@ -1,10 +1,13 @@
 import { Button, Card } from "flowbite-react";
 import { HiPlus } from "react-icons/hi";
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { cartContext } from "../../App";
 
-function ProductCard({ product, cart, setCart }) {
+function ProductCard({ product }) {
   const navigate = useNavigate();
+  const value = useContext(cartContext);
+  const { cart, setCart } = value;
 
   function goToDetails() {
     navigate(`/products/${product.id}`);

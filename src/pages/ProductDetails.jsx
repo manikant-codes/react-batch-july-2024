@@ -1,11 +1,13 @@
 import { Button } from "flowbite-react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleProduct } from "../services/apiServices";
+import { cartContext } from "../App";
 
-function ProductDetails({ cart, setCart }) {
+function ProductDetails() {
   const params = useParams();
   const [product, setProduct] = useState(null);
+  const { cart, setCart } = useContext(cartContext);
 
   useEffect(() => {
     getSingleProduct(params.id).then((data) => {
