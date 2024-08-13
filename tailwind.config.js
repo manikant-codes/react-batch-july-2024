@@ -5,8 +5,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", flowbite.content()],
   theme: {
     colors: {
-      primary: "#24ce70",
-      "primary-dark": "#009c43",
+      "primary-light": "#23b863",
+      primary: "#1a894b",
+      "primary-dark": "#0b532b",
     },
     extend: {},
   },
