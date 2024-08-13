@@ -9,7 +9,7 @@ const links = [
 function Footer() {
   return (
     <div className="px-8 py-4 flex justify-between border-t">
-      <p>Bhagavad Gita</p>
+      <p>Ecom Express</p>
       <ul className="flex gap-4">
         {links.map(function (value) {
           return (
