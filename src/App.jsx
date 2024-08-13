@@ -1,12 +1,11 @@
 import React from "react";
 import Student from "./Student";
+import UseStateDemo from "./components/demo/UseStateDemo";
 
 function App() {
   return (
     <div>
-      <Student name="John Doe" age={32} address={{ city: "New York" }} />
-      <Student name="Jenny Wilson" age={28} address={{ city: "Houston" }} />
-      <Student name="Marry Miller" age={42} />
+      <UseStateDemo name="Ram" age={15} />
     </div>
   );
 }
