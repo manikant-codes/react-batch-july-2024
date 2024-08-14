@@ -1,16 +1,32 @@
-import { Button } from "flowbite-react";
-import { HiShoppingCart } from "react-icons/hi";
-import React from "react";
-import MyButton from "../components/common/MyButton";
+import React, { useState } from "react";
+import ProductCard from "../components/home/ProductCard";
+import { getAllProducts } from "../services/apiServices";
 
 function Home() {
+  const [products, setProducts] = useState(null);
+
+  if (!products) {
+    getAllProducts().then((data) => {
+      setProducts(data);
+    });
+  }
+
+  if (!products) return null;
+
   return (
-    <div className="p-8 flex flex-col gap-4">
-      <MyButton>
-        <HiShoppingCart className="w-5 h-5" />
-      </MyButton>
-      <Button className="w-fit">Click Me</Button>
-      <Button className="w-fit">Do Something</Button>
+    <div className="p-8 grid grid-cols-3 gap-4">
+      {products.map((product, index) => {
+        return (
+          <ProductCard
+            key={product.id}
+            id={product.id}
+            image={product.image}
+            title={product.title}
+            price={product.price}
+            rating={product.rating}
+          />
+        );
+      })}
     </div>
   );
 }
