@@ -1,11 +1,15 @@
 import React from "react";
-import PageTitle from "../components/common/PageTitle";
 import AddTransactionForm from "../components/addTransaction/AddTransactionForm";
+import PageTitle from "../components/common/PageTitle";
+import { useParams } from "react-router-dom";
 
 function AddTransaction() {
+  const { id } = useParams();
+  const isAdd = id === "add";
+
   return (
     <div>
-      <PageTitle title="Add Transaction" />
+      <PageTitle title={isAdd ? "Add Transaction" : "Edit Transaction"} />
       <div>
         <AddTransactionForm />
       </div>

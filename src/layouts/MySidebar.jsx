@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const links = [
   { name: "Dashboard", to: "/" },
-  { name: "Add Transaction", to: "/add-transaction" },
+  { name: "Add Transaction", to: "/transaction/add" },
   { name: "Reports", to: "/reports" },
 ];
 

@@ -1,52 +1,69 @@
 import { Button, Label, Radio, Select, TextInput } from "flowbite-react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { expenseCategories, incomeCategories } from "../../data/categories";
+import { transactionContext } from "../../App";
+import { useParams } from "react-router-dom";
+
+const initialState = {
+  id: Date.now(),
+  amount: "",
+  type: "expense",
+  category: "fuel",
+  date: new Date().toISOString(),
+};
 
 function AddTransactionForm() {
-  const [incomeType, setIncomeType] = useState("expense");
+  const { transactions, setTransactions } = useContext(transactionContext);
+  const { id } = useParams();
+  const isAdd = id === "add";
+  const [formState, setFormState] = useState(
+    isAdd ? initialState : transactions.find((v) => v.id == id)
+  );
 
-  function handleRadioChange(e) {
-    setIncomeType(e.target.value);
+  console.log(formState);
+
+  function handleChange(e) {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    const data = {
-      amount: e.target["transaction-amount"].value,
-      type: e.target["transaction-type"].value,
-      category: e.target["category"].value,
-      date: e.target["date"].value,
-    };
-
-    console.log(data);
+    setTransactions([...transactions, formState]);
+    localStorage.setItem(
+      "transactions",
+      JSON.stringify([...transactions, formState])
+    );
+    alert("Transaction Added!");
+    e.target.reset();
   }
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-1">
-        <Label htmlFor="transaction-amount">Transaction Amount</Label>
+        <Label htmlFor="amount">Transaction Amount</Label>
         <TextInput
-          id="transaction-amount"
-          name="transaction-amount"
+          id="amount"
+          name="amount"
           type="number"
+          value={formState.amount}
+          onChange={handleChange}
         />
       </div>
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-1">
           <Radio
-            name="transaction-type"
+            name="type"
             value="income"
-            onChange={handleRadioChange}
+            onChange={handleChange}
             id="income"
           />
           <Label htmlFor="income">Income</Label>
         </div>
         <div className="flex items-center gap-1">
           <Radio
-            name="transaction-type"
+            name="type"
             value="expense"
-            onChange={handleRadioChange}
+            onChange={handleChange}
             id="expense"
           />
           <Label htmlFor="expense">Expense</Label>
@@ -54,8 +71,13 @@ function AddTransactionForm() {
       </div>
       <div className="flex flex-col gap-1">
         <Label id="category">Category</Label>
-        <Select htmlFor="category" name="category">
-          {(incomeType === "expense"
+        <Select
+          htmlFor="category"
+          name="category"
+          value={formState.category}
+          onChange={handleChange}
+        >
+          {(formState.type === "expense"
             ? expenseCategories
             : incomeCategories
           ).map((value) => {
@@ -65,7 +87,13 @@ function AddTransactionForm() {
       </div>
       <div className="flex flex-col gap-1">
         <Label htmlFor="date">Transaction Date</Label>
-        <TextInput id="date" name="date" type="date" />
+        <TextInput
+          id="date"
+          name="date"
+          type="date"
+          value={formState.date}
+          onChange={handleChange}
+        />
       </div>
       <Button type="submit">Submit</Button>
     </form>
