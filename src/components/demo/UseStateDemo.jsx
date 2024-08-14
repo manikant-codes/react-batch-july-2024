@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 
+function myfunction(props) {}
+
 function UseStateDemo(props) {
-  console.log("props", props.name);
-  //   let count = 0;
   const [count, setCount] = useState(0);
 
   function increaseCount() {
     setCount(count + 1);
     console.log("count", count);
   }
+
+  myfunction(props);
+  myfunction(count);
 
   return (
     <div className="p-8">
