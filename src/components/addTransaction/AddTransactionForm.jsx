@@ -12,6 +12,14 @@ const initialState = {
   date: new Date().toISOString(),
 };
 
+const editInitialStateExample = {
+  id: 1723635457811,
+  amount: "77",
+  type: "expense",
+  category: "tea/coffee",
+  date: "2024-08-14",
+};
+
 function AddTransactionForm() {
   const { transactions, setTransactions } = useContext(transactionContext);
   const { id } = useParams();
@@ -20,7 +28,7 @@ function AddTransactionForm() {
     isAdd ? initialState : transactions.find((v) => v.id == id)
   );
 
-  console.log(formState);
+  console.log("formState", formState);
 
   function handleChange(e) {
     setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -28,13 +36,26 @@ function AddTransactionForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setTransactions([...transactions, formState]);
-    localStorage.setItem(
-      "transactions",
-      JSON.stringify([...transactions, formState])
-    );
-    alert("Transaction Added!");
-    e.target.reset();
+    if (isAdd) {
+      setTransactions([...transactions, formState]);
+      localStorage.setItem(
+        "transactions",
+        JSON.stringify([...transactions, formState])
+      );
+      alert("Transaction Added!");
+      e.target.reset();
+    } else {
+      const updatedTransactions = transactions.map((transaction, index) => {
+        if (transaction.id == id) {
+          return { ...transaction, ...formState };
+        }
+        return transaction;
+      });
+      console.log(updatedTransactions);
+      setTransactions(updatedTransactions);
+      localStorage.setItem("transactions", JSON.stringify(updatedTransactions));
+      alert("Transaction Updated!");
+    }
   }
 
   return (
@@ -56,6 +77,7 @@ function AddTransactionForm() {
             value="income"
             onChange={handleChange}
             id="income"
+            checked={formState.type === "income"}
           />
           <Label htmlFor="income">Income</Label>
         </div>
@@ -65,6 +87,7 @@ function AddTransactionForm() {
             value="expense"
             onChange={handleChange}
             id="expense"
+            checked={formState.type === "expense"}
           />
           <Label htmlFor="expense">Expense</Label>
         </div>
