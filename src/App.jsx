@@ -5,6 +5,7 @@ import MyForm from "./components/form/MyForm";
 import EffectsDemo from "./components/effects/EffectsDemo";
 import PropDrillingDemo from "./components/propDrilling/PropDrillingDemo";
 import EffectsBasics from "./components/effects/EffectsBasics";
+import UseRefDemo from "./components/useRefDemo/UseRefDemo";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       {/* <MyForm /> */}
       {/* <EffectsDemo /> */}
       {/* <PropDrillingDemo /> */}
-      <EffectsBasics />
+      {/* <EffectsBasics /> */}
+      <UseRefDemo />
     </div>
   );
 }
