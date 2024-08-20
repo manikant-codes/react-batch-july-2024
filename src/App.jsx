@@ -1,22 +1,35 @@
-import React from "react";
-import Student from "./Student";
-import UseStateDemo from "./components/demo/UseStateDemo";
-import MyForm from "./components/form/MyForm";
-import EffectsDemo from "./components/effects/EffectsDemo";
-import PropDrillingDemo from "./components/propDrilling/PropDrillingDemo";
-import EffectsBasics from "./components/effects/EffectsBasics";
-import UseRefDemo from "./components/useRefDemo/UseRefDemo";
+import React, { createContext, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import AuthGuard from "./components/automaticRedirect/AuthGuard";
+import ProductsList from "./pages/ProductsList";
+import ProductDetails from "./pages/ProductDetails";
+
+export const userContext = createContext();
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
-    <div>
-      {/* <UseStateDemo name="Ram" age={15} /> */}
-      {/* <MyForm /> */}
-      {/* <EffectsDemo /> */}
-      {/* <PropDrillingDemo /> */}
-      {/* <EffectsBasics /> */}
-      <UseRefDemo />
-    </div>
+    <userContext.Provider value={{ user, setUser }}>
+      <BrowserRouter>
+        <Routes>
+          <Route>
+            <Route path="/" element={<Login />} />
+            <Route path="/products" element={<ProductsList />} />
+            <Route path="/details/:id" element={<ProductDetails />} />
+            <Route
+              path="/dashboard"
+              element={
+                <AuthGuard>
+                  <Dashboard />
+                </AuthGuard>
+              }
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </userContext.Provider>
   );
 }
 
