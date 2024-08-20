@@ -17,3 +17,23 @@ export function getSingleProduct(id) {
       console.log("Error: ", error);
     });
 }
+
+export function getAllCategories() {
+  return fetch(`https://fakestoreapi.com/products/categories`)
+    .then((response) => {
+      return response.json();
+    })
+    .catch((error) => {
+      console.log("Error: ", error);
+    });
+}
+
+export function getProductsOfCategory(category) {
+  return fetch(`https://fakestoreapi.com/products/category/${category}`)
+    .then((response) => {
+      return response.json();
+    })
+    .catch((error) => {
+      console.log("Error: ", error);
+    });
+}
