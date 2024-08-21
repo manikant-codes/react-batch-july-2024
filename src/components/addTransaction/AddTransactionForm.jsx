@@ -13,7 +13,7 @@ const initialState = {
 };
 
 const editInitialStateExample = {
-  id: Date.now(),
+  id: 1723635457811,
   amount: "77",
   type: "expense",
   category: "tea/coffee",
