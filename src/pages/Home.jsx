@@ -7,7 +7,7 @@ import {
 } from "../services/apiServices";
 import { Label, Radio } from "flowbite-react";
 
-function Home() {
+function Home({ cart, setCart }) {
   const [products, setProducts] = useState(null);
   const [categories, setCategories] = useState(null);
 
@@ -76,11 +76,9 @@ function Home() {
           return (
             <ProductCard
               key={product.id}
-              id={product.id}
-              image={product.image}
-              title={product.title}
-              price={product.price}
-              rating={product.rating}
+              product={product}
+              cart={cart}
+              setCart={setCart}
             />
           );
         })}

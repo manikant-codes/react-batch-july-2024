@@ -3,12 +3,37 @@ import React from "react";
 import Rating from "./Rating";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ id, title, price, image, rating }) {
+export function handleAddToCart(e, product, cart, setCart) {
+  e.stopPropagation();
+  const alreadyPresent = cart.find((cartItem) => {
+    if (cartItem.id === product.id) {
+      return true;
+    }
+    return false;
+  });
+
+  if (alreadyPresent) {
+    const newCart = cart.map((cartItem) => {
+      if (cartItem.id === product.id) {
+        return { ...cartItem, qty: cartItem.qty + 1 };
+      }
+      return cartItem;
+    });
+    setCart(newCart);
+  } else {
+    setCart([...cart, { ...product, qty: 1 }]);
+  }
+}
+
+function ProductCard({ cart, setCart, product }) {
+  const { id, title, price, image, rating } = product;
   const navigate = useNavigate();
 
   function goToDetails() {
     navigate(`/product/${id}`);
   }
+
+  console.log("cart", cart);
 
   return (
     <Card
@@ -25,7 +50,13 @@ function ProductCard({ id, title, price, image, rating }) {
         <span className="text-3xl font-bold text-gray-900 dark:text-white">
           ${price}
         </span>
-        <Button>Add to cart</Button>
+        <Button
+          onClick={(e) => {
+            handleAddToCart(e, product, cart, setCart);
+          }}
+        >
+          Add to cart
+        </Button>
       </div>
     </Card>
   );

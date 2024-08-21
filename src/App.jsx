@@ -6,15 +6,20 @@ import Home from "./pages/Home";
 import { Flowbite } from "flowbite-react";
 import { customTheme } from "./theme/customTheme";
 import ProductDetails from "./pages/ProductDetails";
+import { useState } from "react";
 
 function App() {
+  const [cart, setCart] = useState([]);
   return (
     <Flowbite theme={{ theme: customTheme }}>
       <BrowserRouter>
         <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
+          <Route element={<Layout cart={cart} setCart={setCart} />}>
+            <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
+            <Route
+              path="/product/:id"
+              element={<ProductDetails cart={cart} setCart={setCart} />}
+            />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
           </Route>

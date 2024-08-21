@@ -4,8 +4,9 @@ import { getSingleProduct } from "../services/apiServices";
 import Rating from "../components/home/Rating";
 import { Button } from "flowbite-react";
 import { HiPlus } from "react-icons/hi";
+import { handleAddToCart } from "../components/home/ProductCard";
 
-function ProductDetails() {
+function ProductDetails({ cart, setCart }) {
   const [product, setProduct] = useState(null);
   const params = useParams();
 
@@ -32,7 +33,12 @@ function ProductDetails() {
         <p>Category: {product.category}</p>
         <Rating rating={product.rating.rate} count={product.rating.count} />
         <p className="text-xl">${product.price}</p>
-        <Button className="w-fit mt-8">
+        <Button
+          className="w-fit mt-8"
+          onClick={(e) => {
+            handleAddToCart(e, product, cart, setCart);
+          }}
+        >
           <HiPlus className="h-5 w-5 mr-2" /> Add to Cart
         </Button>
       </div>

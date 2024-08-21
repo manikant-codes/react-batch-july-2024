@@ -9,7 +9,7 @@ const links = [
   { id: 3, name: "Contact", link: "/contact" },
 ];
 
-function Navbar() {
+function Navbar({ cart, setCart }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleToggle() {
@@ -33,7 +33,12 @@ function Navbar() {
           </li>
         </ul>
       </nav>
-      <CartDrawer isOpen={isOpen} handleClose={handleToggle} />
+      <CartDrawer
+        isOpen={isOpen}
+        handleClose={handleToggle}
+        cart={cart}
+        setCart={setCart}
+      />
     </>
   );
 }
