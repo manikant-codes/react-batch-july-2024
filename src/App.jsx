@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import AuthGuard from "./components/automaticRedirect/AuthGuard";
 import ProductsList from "./pages/ProductsList";
 import ProductDetails from "./pages/ProductDetails";
+import Home from "./pages/Home";
 
 export const userContext = createContext();
 
@@ -15,6 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route>
+            <Route path="/" element={<Home />} />
             <Route path="/" element={<Login />} />
             <Route path="/products" element={<ProductsList />} />
             <Route path="/details/:id" element={<ProductDetails />} />
