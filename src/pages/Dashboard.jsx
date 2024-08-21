@@ -4,7 +4,7 @@ import MyChart from "../components/dashboard/MyChart";
 
 function Dashboard() {
   return (
-    <div className="">
+    <div>
       <PageTitle title="Dashboard" />
       <div>
         <MyChart />

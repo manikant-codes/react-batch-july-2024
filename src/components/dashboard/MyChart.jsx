@@ -1,33 +1,8 @@
 import CanvasJSReact from "@canvasjs/react-charts";
-import { Select, TextInput } from "flowbite-react";
-import React, { useContext, useState } from "react";
-import { transactionContext } from "../../App";
+import React from "react";
+import { useFilters } from "../../hooks/useFilters";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
-
-export function getFilteredList(transactions, type, fromDate, toDate) {
-  const hasDates = fromDate && toDate ? true : false;
-  let fromDateObj = hasDates ? new Date(fromDate) : null;
-  let toDateObj = hasDates ? new Date(toDate) : null;
-
-  let filteredTransactions = transactions?.filter((value) => {
-    if (hasDates) {
-      const dateObj = new Date(value.date);
-      if (
-        dateObj >= fromDateObj &&
-        dateObj <= toDateObj &&
-        value.type === type
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    return value.type === type;
-  });
-
-  return filteredTransactions || [];
-}
 
 function getDataPoints(filteredTransactions) {
   let dataPoints = {};
@@ -50,27 +25,7 @@ function getDataPoints(filteredTransactions) {
 }
 
 function MyChart() {
-  const { transactions, setTransactions } = useContext(transactionContext);
-  const [type, setType] = useState("income");
-  const [dateRange, setDateRange] = useState({
-    fromDate: "",
-    toDate: "",
-  });
-
-  function handleTypeChange(e) {
-    setType(e.target.value);
-  }
-
-  function handleDateChange(e) {
-    setDateRange({ ...dateRange, [e.target.name]: e.target.value });
-  }
-
-  const filteredTransactions = getFilteredList(
-    transactions,
-    type,
-    dateRange.fromDate,
-    dateRange.toDate
-  );
+  const { filteredTransactions, Filters } = useFilters();
 
   const dataPoints = getDataPoints(filteredTransactions);
 
@@ -96,24 +51,7 @@ function MyChart() {
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-4 mb-4">
-        <TextInput
-          type="date"
-          name="fromDate"
-          value={dateRange.fromDate}
-          onChange={handleDateChange}
-        />
-        <TextInput
-          type="date"
-          name="toDate"
-          value={dateRange.toDate}
-          onChange={handleDateChange}
-        />
-        <Select value={type} onChange={handleTypeChange}>
-          <option value="expense">Expense</option>
-          <option value="income">Income</option>
-        </Select>
-      </div>
+      <Filters />
       <CanvasJSChart options={options} />
     </div>
   );

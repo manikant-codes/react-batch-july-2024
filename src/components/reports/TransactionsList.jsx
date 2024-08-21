@@ -1,27 +1,14 @@
-import React, { useContext, useState } from "react";
-import { transactionContext } from "../../App";
-import { Button, Select, TextInput } from "flowbite-react";
-import { HiTrash, HiPencil } from "react-icons/hi";
+import { Button } from "flowbite-react";
+import React, { useContext } from "react";
+import { HiPencil, HiTrash } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import { getFilteredList } from "../dashboard/MyChart";
+import { transactionContext } from "../../App";
+import { useFilters } from "../../hooks/useFilters";
 
 function TransactionsList() {
   const { transactions, setTransactions } = useContext(transactionContext);
   const navigate = useNavigate();
-
-  const [type, setType] = useState("income");
-  const [dateRange, setDateRange] = useState({
-    fromDate: "",
-    toDate: "",
-  });
-
-  function handleTypeChange(e) {
-    setType(e.target.value);
-  }
-
-  function handleDateChange(e) {
-    setDateRange({ ...dateRange, [e.target.name]: e.target.value });
-  }
+  const { filteredTransactions, Filters } = useFilters();
 
   if (!transactions || !transactions.length) {
     <p>No transactions to show!</p>;
@@ -38,33 +25,9 @@ function TransactionsList() {
     localStorage.setItem("transactions", JSON.stringify(newTransactions));
   }
 
-  const filteredTransactions = getFilteredList(
-    transactions,
-    type,
-    dateRange.fromDate,
-    dateRange.toDate
-  );
-
   return (
     <div>
-      <div className="grid grid-cols-3 gap-4 mb-4">
-        <TextInput
-          type="date"
-          name="fromDate"
-          value={dateRange.fromDate}
-          onChange={handleDateChange}
-        />
-        <TextInput
-          type="date"
-          name="toDate"
-          value={dateRange.toDate}
-          onChange={handleDateChange}
-        />
-        <Select value={type} onChange={handleTypeChange}>
-          <option value="expense">Expense</option>
-          <option value="income">Income</option>
-        </Select>
-      </div>
+      <Filters />
       <ul className="flex flex-col gap-2">
         {filteredTransactions.map((transaction, index) => {
           return (
