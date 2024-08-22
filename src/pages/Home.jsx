@@ -5,14 +5,15 @@ import {
   getAllProducts,
   getProductsOfCategory,
 } from "../services/apiServices";
-import { Label, Radio } from "flowbite-react";
+import { Label, Radio, Select } from "flowbite-react";
 
 function Home({ cart, setCart }) {
   const [products, setProducts] = useState(null);
   const [categories, setCategories] = useState(null);
+  const [sort, setSort] = useState("asc");
 
   if (!products) {
-    getAllProducts().then((data) => {
+    getAllProducts(sort).then((data) => {
       setProducts(data);
     });
   }
@@ -33,6 +34,12 @@ function Home({ cart, setCart }) {
         setProducts(data);
       });
     }
+  }
+
+  function handleSortChange(e) {
+    console.log(e.target.value);
+    setSort(e.target.value);
+    setProducts(null);
   }
 
   if (!products) return null;
@@ -71,17 +78,25 @@ function Home({ cart, setCart }) {
         </ul>
       </div>
       {/* Products Div */}
-      <div className="p-8 grid grid-cols-3 gap-4">
-        {products.map((product, index) => {
-          return (
-            <ProductCard
-              key={product.id}
-              product={product}
-              cart={cart}
-              setCart={setCart}
-            />
-          );
-        })}
+      <div>
+        <div className="flex justify-end mr-8">
+          <Select value={sort} onChange={handleSortChange}>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </Select>
+        </div>
+        <div className="p-8 grid grid-cols-3 gap-4">
+          {products.map((product, index) => {
+            return (
+              <ProductCard
+                key={product.id}
+                product={product}
+                cart={cart}
+                setCart={setCart}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

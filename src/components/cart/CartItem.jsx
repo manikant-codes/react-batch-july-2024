@@ -14,6 +14,32 @@ function CartItem({ product, cart, setCart }) {
     setCart(newCart);
   }
 
+  function handleIncrease() {
+    const newCart = cart.map((cartItem) => {
+      if (cartItem.id === product.id) {
+        if (cartItem.qty < 10) {
+          return { ...cartItem, qty: cartItem.qty + 1 };
+        }
+        return cartItem;
+      }
+      return cartItem;
+    });
+    setCart(newCart);
+  }
+
+  function handleDecrease() {
+    const newCart = cart.map((cartItem) => {
+      if (cartItem.id === product.id) {
+        if (cartItem.qty > 1) {
+          return { ...cartItem, qty: cartItem.qty - 1 };
+        }
+        return cartItem;
+      }
+      return cartItem;
+    });
+    setCart(newCart);
+  }
+
   return (
     <div className="flex items-center gap-2 border-t pt-2 pb-2">
       <div className="h-[50px] w-[50px] overflow-hidden rounded-full border border-slate-400 shrink-0">
@@ -23,11 +49,11 @@ function CartItem({ product, cart, setCart }) {
         <p className="text-sm">{product.title}</p>
         <p className="text-sm font-semibold">${product.price}</p>
         <div className="flex items-center gap-1">
-          <Button size="xs" className="p-0" pill>
+          <Button onClick={handleDecrease} size="xs" className="p-0" pill>
             <HiMinus />
           </Button>
           <p>{product.qty}</p>
-          <Button size="xs" className="p-0" pill>
+          <Button onClick={handleIncrease} size="xs" className="p-0" pill>
             <HiPlus />
           </Button>
         </div>
