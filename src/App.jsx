@@ -6,6 +6,7 @@ import { customTheme } from "./theme/customTheme";
 import AddTransaction from "./pages/AddTransaction";
 import Reports from "./pages/Reports";
 import { createContext, useState } from "react";
+import UseReducerDemo from "./components/useReducerDemo/UseReducerDemo";
 
 export const transactionContext = createContext([]);
 
@@ -20,7 +21,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Dashboard />} />
+              <Route index element={<UseReducerDemo />} />
               <Route path="/transaction/:id" element={<AddTransaction />} />
               <Route path="/reports" element={<Reports />} />
             </Route>
