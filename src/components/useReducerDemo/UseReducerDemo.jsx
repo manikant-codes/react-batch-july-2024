@@ -15,6 +15,8 @@ function UseReducerDemo() {
   // const [count, setCount] = useState(0);
   const [cake, dispatch] = useReducer(reducer, 10);
 
+  console.log("Rendered");
+
   function handleBuy() {
     dispatch({ type: "buy", payload: 2 });
   }
