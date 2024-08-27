@@ -10,7 +10,7 @@ Ecommerce Application
     - Technologies used:
         - React.js, Tailwind CSS and Flowbite React for UI
         - Redux for global state management of cart and user,
-        - Node.js and Express.js for server
+        - Node.js and Express.js for server 
         - MongoDB and Mongoose for database
         - JWT for role based authentication
         - Nodemailer for emails
