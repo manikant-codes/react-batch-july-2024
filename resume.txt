@@ -1,0 +1,61 @@
+--------------------------------------------------
+Work Experience
+--------------------------------------------------
+
+Fullstack Trainee/Developer
+LOPE Multimedia and Design Institute | Yogi Chowk, Surat
+
+Ecommerce Application
+    - Developed a single vendor eccommerce application both frontend and backend, where the admin can manage products, orders, users, pages and the user can view, add to cart and order products. Both admin and user have their own dashboard to manage settings and entities related to them.
+    - Technologies used:
+        - React.js, Tailwind CSS and Flowbite React for UI
+        - Redux for global state management of cart and user,
+        - Node.js and Express.js for server
+        - MongoDB and Mongoose for database
+        - JWT for role based authentication
+        - Nodemailer for emails
+        - Stripe for orders and payments
+        - Git for version control
+
+Task Management Application
+    - Developed a multi-user task management application were an individual user can maintain their tasks list.
+    - Technologies used:
+        - React.js, Tailwind CSS and Flowbite React for UI
+        - Redux for global state management of user,
+        - Node.js and Express.js for server
+        - MongoDB and Mongoose for database
+        - JWT for role based authentication
+        - Git for version control
+
+Pokedex Application
+    - <fill about section>
+    - Technologies used:
+        - React.js for UI
+        - CSS Modules for styling
+        - Poke API for pokemons data 
+        - Git for version control
+
+Weather Application
+    - Developed a weather application where the user can look up the weather forecast for a city for upto 5 days.
+    - Technologies used:
+        - React.js for UI
+        - CSS Modules for styling
+        - OpenWeather API for weather data        
+        - Git for version control
+
+--------------------------------------------------
+Skills
+--------------------------------------------------
+React.js, Redux, Flowbite React, Tailwind CSS, Node.js, Express.js, MongoDB, Mongoose, JWT, Git/Github, HTML, CSS, JS
+
+--------------------------------------------------
+Education
+--------------------------------------------------
+
+Fullstack Development
+LOPE Multimedia & Design Institute
+20xx - 20xx | Surat, <963258>
+
+Degree
+University
+20xx - 20xx | Surat, <963258>
