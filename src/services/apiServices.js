@@ -1,21 +1,15 @@
 export function getAllProducts(sort) {
-  return fetch(`https://fakestoreapi.com/products?sort=${sort}`)
-    .then((response) => {
+  return fetch(`https://fakestoreapi.com/products?sort=${sort}`).then(
+    (response) => {
       return response.json();
-    })
-    .catch((error) => {
-      console.log("Error: ", error);
-    });
+    }
+  );
 }
 
 export function getSingleProduct(id) {
-  return fetch(`https://fakestoreapi.com/products/${id}`)
-    .then((response) => {
-      return response.json();
-    })
-    .catch((error) => {
-      console.log("Error: ", error);
-    });
+  return fetch(`https://fakestoreapi.com/products/${id}`).then((response) => {
+    return response.json();
+  });
 }
 
 export function getAllCategories() {

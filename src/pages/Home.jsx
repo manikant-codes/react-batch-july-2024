@@ -1,28 +1,46 @@
-import React, { useState } from "react";
+import { Label, Radio, Select } from "flowbite-react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../components/home/ProductCard";
 import {
   getAllCategories,
   getAllProducts,
   getProductsOfCategory,
 } from "../services/apiServices";
-import { Label, Radio, Select } from "flowbite-react";
 
 function Home({ cart, setCart }) {
   const [products, setProducts] = useState(null);
   const [categories, setCategories] = useState(null);
   const [sort, setSort] = useState("asc");
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [errorProducts, setErrorProducts] = useState("");
+  const [loadingCategories, setLoadingCategories] = useState(true);
+  const [errorCategories, setErrorCategories] = useState("");
 
-  if (!products) {
-    getAllProducts(sort).then((data) => {
-      setProducts(data);
-    });
-  }
+  useEffect(() => {
+    getAllProducts(sort)
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((error) => {
+        setErrorProducts(error.message);
+      })
+      .finally(() => {
+        setLoadingProducts(false);
+      });
+  }, []);
 
-  if (!categories) {
-    getAllCategories().then((data) => {
-      setCategories(data);
-    });
-  }
+  useEffect(() => {
+    getAllCategories()
+      .then((data) => {
+        setCategories(data);
+      })
+      .catch((error) => {
+        setErrorCategories(error.message);
+      })
+      .finally(() => {
+        setLoadingCategories(false);
+      });
+  }, []);
 
   function handleChange(e) {
     if (e.target.value === "all") {
@@ -42,8 +60,10 @@ function Home({ cart, setCart }) {
     setProducts(null);
   }
 
-  if (!products) return null;
-  if (!categories) return null;
+  if (loadingProducts) return <p>Loading...</p>;
+  if (loadingCategories) return <p>Loading...</p>;
+  if (errorProducts) return <p>{errorProducts}</p>;
+  if (errorCategories) return <p>{errorProducts}</p>;
 
   return (
     <div className="grid grid-cols-[256px_1fr]">

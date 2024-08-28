@@ -23,7 +23,7 @@ function Navbar({ cart, setCart }) {
         <ul className="flex gap-8 items-center">
           {links.map(function (value, index, array) {
             return (
-              <li>
+              <li key={index}>
                 <Link to={value.link}>{value.name}</Link>
               </li>
             );

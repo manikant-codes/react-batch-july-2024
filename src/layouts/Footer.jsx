@@ -11,9 +11,9 @@ function Footer() {
     <div className="px-8 py-4 flex justify-between border-t">
       <p>Ecom Express</p>
       <ul className="flex gap-4">
-        {links.map(function (value) {
+        {links.map(function (value, index) {
           return (
-            <li>
+            <li key={index}>
               <Link to={value.link}>{value.name}</Link>
             </li>
           );
