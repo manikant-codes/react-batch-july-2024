@@ -8,6 +8,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Home from "./pages/Home";
 import ContextDemo from "./components/contextDemo/ContextDemo";
 import PreventingRerenders from "./components/preventingRerenders/PreventingRerenders";
+import HOCDemo from "./components/hocDemo/HOCDemo";
 
 export const userContext = createContext();
 
@@ -18,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route>
-            <Route path="/" element={<PreventingRerenders />} />
+            <Route path="/" element={<HOCDemo />} />
             <Route path="/" element={<Login />} />
             <Route path="/products" element={<ProductsList />} />
             <Route path="/details/:id" element={<ProductDetails />} />

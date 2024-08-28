@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import ListComponent from "./ListComponent";
 
 function PreventingRerenders() {
   const [count, setCount] = useState(0);
   const [list, setList] = useState(["Task"]);
 
-  function addTask() {
-    setList([...list, "Task"]);
-  }
+  const addTask = useCallback(
+    function () {
+      setList([...list, "Task"]);
+    },
+    [list]
+  );
 
   function increase() {
     setCount(count + 1);
