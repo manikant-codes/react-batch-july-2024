@@ -10,6 +10,7 @@ import { customTheme } from "./theme/customTheme";
 export const transactionContext = createContext([]);
 
 const initialState = JSON.parse(localStorage.getItem("transactions")) || [];
+
 function reducer(transactionsList, action) {
   if (action.type === "ADD") {
     const newTransationsList = [...transactionsList, action.payload];
@@ -23,7 +24,6 @@ function reducer(transactionsList, action) {
       }
       return transaction;
     });
-    console.log(newTransationsList);
     localStorage.setItem("transactions", JSON.stringify(newTransationsList));
     return newTransationsList;
   } else if (action.type === "DELETE") {
