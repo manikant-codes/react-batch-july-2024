@@ -1,22 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleProduct } from "../services/apiServices";
 import Rating from "../components/home/Rating";
 import { Button } from "flowbite-react";
 import { HiPlus } from "react-icons/hi";
 import { handleAddToCart } from "../components/home/ProductCard";
+import { HiOutlineChevronDoubleDown } from "react-icons/hi";
 
 function ProductDetails({ cart, setCart }) {
   const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const params = useParams();
 
-  if (!product) {
-    getSingleProduct(params.id).then((data) => {
-      setProduct(data);
-    });
-  }
+  // if (!product) {
+  //   getSingleProduct(params.id).then((data) => {
+  //     setProduct(data);
+  //   });
+  // }
 
-  if (!product) return null;
+  useEffect(() => {
+    getSingleProduct(params.id)
+      .then((data) => {
+        setProduct(data);
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading)
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <HiOutlineChevronDoubleDown className="text-5xl animate-bounce" />
+      </div>
+    );
+
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="grid grid-cols-2 gap-4">
