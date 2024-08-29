@@ -2,7 +2,7 @@ import { Button, Label, Radio, Select, TextInput } from "flowbite-react";
 import React, { useContext, useState } from "react";
 import { expenseCategories, incomeCategories } from "../../data/categories";
 import { transactionContext } from "../../App";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const initialState = {
   id: Date.now(),
@@ -12,23 +12,22 @@ const initialState = {
   date: new Date().toISOString(),
 };
 
-const editInitialStateExample = {
-  id: 1723635457811,
-  amount: "77",
-  type: "expense",
-  category: "tea/coffee",
-  date: "2024-08-14",
-};
+// const editInitialStateExample = {
+//   id: 1723635457811,
+//   amount: "77",
+//   type: "expense",
+//   category: "tea/coffee",
+//   date: "2024-08-14",
+// };
 
 function AddTransactionForm() {
-  const { transactions, setTransactions } = useContext(transactionContext);
+  const { transactionsList, dispatch } = useContext(transactionContext);
   const { id } = useParams();
   const isAdd = id === "add";
   const [formState, setFormState] = useState(
-    isAdd ? initialState : transactions.find((v) => v.id == id)
+    isAdd ? initialState : transactionsList.find((v) => v.id == id)
   );
-
-  console.log("formState", formState);
+  const navigate = useNavigate();
 
   function handleChange(e) {
     setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -37,24 +36,21 @@ function AddTransactionForm() {
   function handleSubmit(e) {
     e.preventDefault();
     if (isAdd) {
-      setTransactions([...transactions, formState]);
-      localStorage.setItem(
-        "transactions",
-        JSON.stringify([...transactions, formState])
-      );
-      alert("Transaction Added!");
+      dispatch({ type: "ADD", payload: formState });
       e.target.reset();
+      alert("Transaction Added!");
     } else {
-      const updatedTransactions = transactions.map((transaction, index) => {
-        if (transaction.id == id) {
-          return { ...transaction, ...formState };
-        }
-        return transaction;
-      });
-      console.log(updatedTransactions);
-      setTransactions(updatedTransactions);
-      localStorage.setItem("transactions", JSON.stringify(updatedTransactions));
+      // const updatedTransactions = transactions.map((transaction, index) => {
+      //   if (transaction.id == id) {
+      //     return { ...transaction, ...formState };
+      //   }
+      //   return transaction;
+      // });
+      // setTransactions(updatedTransactions);
+      // localStorage.setItem("transactions", JSON.stringify(updatedTransactions));
+      dispatch({ type: "UPDATE", payload: { id, formState } });
       alert("Transaction Updated!");
+      navigate("/reports");
     }
   }
 

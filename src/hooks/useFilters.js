@@ -28,7 +28,7 @@ export function getFilteredTransactions(transactions, type, fromDate, toDate) {
 }
 
 export function useFilters() {
-  const { transactions } = useContext(transactionContext);
+  const { transactionsList } = useContext(transactionContext);
   const [type, setType] = useState("income");
   const [dateRange, setDateRange] = useState({
     fromDate: "",
@@ -36,7 +36,7 @@ export function useFilters() {
   });
 
   const filteredTransactions = getFilteredTransactions(
-    transactions,
+    transactionsList,
     type,
     dateRange.fromDate,
     dateRange.toDate

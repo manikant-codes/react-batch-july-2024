@@ -6,11 +6,11 @@ import { transactionContext } from "../../App";
 import { useFilters } from "../../hooks/useFilters";
 
 function TransactionsList() {
-  const { transactions, setTransactions } = useContext(transactionContext);
+  const { transactionsList, dispatch } = useContext(transactionContext);
   const navigate = useNavigate();
   const { filteredTransactions, Filters } = useFilters();
 
-  if (!transactions || !transactions.length) {
+  if (!transactionsList || !transactionsList.length) {
     <p>No transactions to show!</p>;
   }
 
@@ -18,11 +18,13 @@ function TransactionsList() {
     navigate(`/transaction/${id}`);
   }
 
-  function handleDelete(index, id) {
-    const newTransactions = [...transactions];
-    newTransactions.splice(index, 1);
-    setTransactions(newTransactions);
-    localStorage.setItem("transactions", JSON.stringify(newTransactions));
+  function handleDelete(id) {
+    // const newTransactions = [...transactions];
+    // newTransactions.splice(index, 1);
+    // setTransactions(newTransactions);
+    // localStorage.setItem("transactions", JSON.stringify(newTransactions));
+    dispatch({ type: "DELETE", payload: id });
+    alert("Deleted successfully!");
   }
 
   return (
@@ -53,7 +55,7 @@ function TransactionsList() {
                 </Button>
                 <Button
                   onClick={() => {
-                    handleDelete(index, transaction.id);
+                    handleDelete(transaction.id);
                   }}
                   size="xs"
                   color="failure"
