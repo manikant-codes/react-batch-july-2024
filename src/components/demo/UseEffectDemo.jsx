@@ -20,13 +20,10 @@ function UseEffectDemo() {
       .finally(() => {
         setLoading(false);
       });
-    console.log(2 + 2);
   }, []);
 
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>{error}</h1>;
-
-  console.log(users);
 
   return (
     <div id="mydiv">

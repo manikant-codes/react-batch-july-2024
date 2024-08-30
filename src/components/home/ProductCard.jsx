@@ -33,8 +33,6 @@ function ProductCard({ cart, setCart, product }) {
     navigate(`/product/${id}`);
   }
 
-  console.log("cart", cart);
-
   return (
     <Card
       className="max-w-sm cursor-pointer"
