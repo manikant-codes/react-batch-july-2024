@@ -1,0 +1,33 @@
+- Redux ek global state management library hai.
+    - Global state yane aise state jinhe aap ko pure application me kafi jagah use/change karna padta hoo.
+        - Jaise ke cart ka state, user ka state, etc.
+    - Global state management yane inhi global states ko use/change karna.
+    - Redux ek JS library hai jo JS applications (React, Angular, Vue, Node, JS Applicaiton) me aap ko aise hi cart jaise states manage karne deti hai.
+
+- Ham do libraries ka use karenge ReduxToolkit aur ReactRedux.
+    - Redux ko setup aur use karne ka process lengthy hai. Isi ko aasan banane ke liye ek aur library hai ReduxToolkit.
+    - ReduxToolkit redux likhne ka naya tarika hai. Ye JS apps me redux ko use karna aasaan banata hai.
+    - ReactRedux ye aap ko kuch hooks deta hai jis se react me redux use karna aasaan hojata hai.
+    - ReduxToolkit redux ko aasaan banata hai aur ReactRedux redux ko react me use karna aasaan banata hai.
+    - Redux -> ReduxToolkit -> ReactRedux -> React
+
+- Redux Pattern
+    - Yane Redux kaise kaam karta hai.
+    - Is pattern me 3 main componets/chize hai:
+        - Store:
+            - Yane wo jagah jaha aap apne saare global states store karte/rakhte hoo.
+            - Sare global states aap ek jagah pe rakhte hoo aur us jagah ka naam hai store.
+            - Syntax ke hisab se baat kare to ye store ek object hai.
+        - Reducer:
+            - Reducer ek function hai jo aap ke liye store ke states me changes karta hai.
+        - Action:
+            - Action ek object hai jisme 2 properties hoti hain:
+                - type
+                - payload
+            - Is action object ka use kar ke aap reducer ko batate hoo ke konse state me kya changes karne hai.
+
+    - Aur 3 main principles/rules hai:
+        - 1. Sare global state store me rakhe jayenge.
+        - 2. Store ke states me directly changes nahi kiye jaa sakte hain. Jo bhi changes hain wo sirf reducer function kar sakta hain.
+        - 3. Reducer function ko action dispatch kar ke batate hai ke konse state me kya changes karne hai.
+        

@@ -5,6 +5,8 @@ import Layout from "./layouts/MyLayout";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import { customTheme } from "./theme/customTheme";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 export const cartContext = createContext();
 
@@ -12,18 +14,20 @@ function App() {
   const [cart, setCart] = useState([]);
 
   return (
-    <cartContext.Provider value={{ cart, setCart }}>
-      <Flowbite theme={{ theme: customTheme }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="/products/:id" element={<ProductDetails />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </Flowbite>
-    </cartContext.Provider>
+    <Provider store={store}>
+      <cartContext.Provider value={{ cart, setCart }}>
+        <Flowbite theme={{ theme: customTheme }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="/products/:id" element={<ProductDetails />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </Flowbite>
+      </cartContext.Provider>
+    </Provider>
   );
 }
 
