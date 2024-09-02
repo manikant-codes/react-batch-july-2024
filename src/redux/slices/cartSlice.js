@@ -9,8 +9,35 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: initialState,
   reducers: {
-    addToCart: (state, action) => {},
-    removeFromCart: (state, action) => {},
+    addToCart: (state, action) => {
+      const foundProduct = state.cartList.find((value) => {
+        if (value.id === action.payload.id) {
+          return true;
+        }
+        return false;
+      });
+
+      if (foundProduct) {
+        const updatedCart = state.cartList.map((value) => {
+          if (value.id === foundProduct.id) {
+            return { ...value, qty: value.qty + 1 };
+          }
+          return value;
+        });
+        state.cartList = updatedCart;
+      } else {
+        state.cartList = [...state.cartList, action.payload];
+      }
+    },
+    removeFromCart: (state, action) => {
+      const updatedCart = state.cartList.filter((value) => {
+        if (value.id === action.payload) {
+          return false;
+        }
+        return true;
+      });
+      state.cartList = updatedCart;
+    },
     increaseQty: (state, action) => {},
     decreaseQty: (state, action) => {},
   },

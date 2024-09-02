@@ -1,16 +1,20 @@
 import { Button } from "flowbite-react";
 import React from "react";
 import { HiTrash, HiPlus, HiMinus } from "react-icons/hi";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../redux/slices/cartSlice";
 
 function CartItem({ product, cart, setCart }) {
+  const dispatch = useDispatch();
   function handleDelete() {
-    const updatedCart = cart.filter((value) => {
-      if (value.id === product.id) {
-        return false;
-      }
-      return true;
-    });
-    setCart(updatedCart);
+    // const updatedCart = cart.filter((value) => {
+    //   if (value.id === product.id) {
+    //     return false;
+    //   }
+    //   return true;
+    // });
+    // setCart(updatedCart);
+    dispatch(removeFromCart(product.id));
   }
 
   function handleIncrease() {

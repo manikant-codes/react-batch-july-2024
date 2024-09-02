@@ -44,9 +44,9 @@ function MyNavbar() {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          {links.map((value) => {
+          {links.map((value, index) => {
             return (
-              <NavbarLink as={Link} to={value.link}>
+              <NavbarLink key={index} as={Link} to={value.link}>
                 {value.text}
               </NavbarLink>
             );

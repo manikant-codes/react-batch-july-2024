@@ -3,11 +3,19 @@ import { HiPlus } from "react-icons/hi";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { cartContext } from "../../App";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
-  const value = useContext(cartContext);
-  const { cart, setCart } = value;
+  // const value = useContext(cartContext);
+  // const { cart, setCart } = value;
+  const dispatch = useDispatch();
+  const cart = useSelector((store) => {
+    return store.cart.cartList;
+  });
+
+  console.log(cart);
 
   function goToDetails() {
     navigate(`/products/${product.id}`);
@@ -15,24 +23,26 @@ function ProductCard({ product }) {
 
   function handleAddToCart(e) {
     e.stopPropagation();
-    const foundProduct = cart.find((value) => {
-      if (value.id === product.id) {
-        return true;
-      }
-      return false;
-    });
+    console.log("addToCart()", addToCart({ ...product, qty: 1 }));
+    dispatch(addToCart({ ...product, qty: 1 }));
+    // const foundProduct = cart.find((value) => {
+    //   if (value.id === product.id) {
+    //     return true;
+    //   }
+    //   return false;
+    // });
 
-    if (foundProduct) {
-      const updatedCart = cart.map((value) => {
-        if (value.id === foundProduct.id) {
-          return { ...value, qty: value.qty + 1 };
-        }
-        return value;
-      });
-      setCart(updatedCart);
-    } else {
-      setCart([...cart, { ...product, qty: 1 }]);
-    }
+    // if (foundProduct) {
+    //   const updatedCart = cart.map((value) => {
+    //     if (value.id === foundProduct.id) {
+    //       return { ...value, qty: value.qty + 1 };
+    //     }
+    //     return value;
+    //   });
+    //   setCart(updatedCart);
+    // } else {
+    //   setCart([...cart, { ...product, qty: 1 }]);
+    // }
   }
 
   return (
