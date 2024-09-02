@@ -8,6 +8,7 @@ import { customTheme } from "./theme/customTheme";
 import ProductDetails from "./pages/ProductDetails";
 import { useState } from "react";
 import UseEffectDemo from "./components/demo/UseEffectDemo";
+import MemoDemo from "./components/demo/MemoDemo";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -16,8 +17,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout cart={cart} setCart={setCart} />}>
-            {/* <Route path="/" element={<UseEffectDemo />} /> */}
-            <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
+            <Route path="/" element={<MemoDemo />} />
+            {/* <Route path="/" element={<Home cart={cart} setCart={setCart} />} /> */}
             <Route
               path="/product/:id"
               element={<ProductDetails cart={cart} setCart={setCart} />}
