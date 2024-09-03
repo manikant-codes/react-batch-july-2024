@@ -38,8 +38,27 @@ const cartSlice = createSlice({
       });
       state.cartList = updatedCart;
     },
-    increaseQty: (state, action) => {},
-    decreaseQty: (state, action) => {},
+    increaseQty: (state, action) => {
+      const updatedCart = state.cartList.map((value) => {
+        if (value.id === action.payload) {
+          return { ...value, qty: value.qty + 1 };
+        }
+        return value;
+      });
+      state.cartList = updatedCart;
+    },
+    decreaseQty: (state, action) => {
+      const updatedCart = state.cartList.map((value) => {
+        if (value.id === action.payload) {
+          if (value.qty > 1) {
+            return { ...value, qty: value.qty - 1 };
+          }
+          return value;
+        }
+        return value;
+      });
+      state.cartList = updatedCart;
+    },
   },
 });
 

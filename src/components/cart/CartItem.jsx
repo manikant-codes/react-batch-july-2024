@@ -2,7 +2,11 @@ import { Button } from "flowbite-react";
 import React from "react";
 import { HiTrash, HiPlus, HiMinus } from "react-icons/hi";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../redux/slices/cartSlice";
+import {
+  decreaseQty,
+  increaseQty,
+  removeFromCart,
+} from "../../redux/slices/cartSlice";
 
 function CartItem({ product, cart, setCart }) {
   const dispatch = useDispatch();
@@ -18,26 +22,28 @@ function CartItem({ product, cart, setCart }) {
   }
 
   function handleIncrease() {
-    const updatedCart = cart.map((value) => {
-      if (value.id === product.id) {
-        return { ...value, qty: value.qty + 1 };
-      }
-      return value;
-    });
-    setCart(updatedCart);
+    // const updatedCart = cart.map((value) => {
+    //   if (value.id === product.id) {
+    //     return { ...value, qty: value.qty + 1 };
+    //   }
+    //   return value;
+    // });
+    // setCart(updatedCart);
+    dispatch(increaseQty(product.id));
   }
 
   function handleDecrease() {
-    const updatedCart = cart.map((value) => {
-      if (value.id === product.id) {
-        if (value.qty > 1) {
-          return { ...value, qty: value.qty - 1 };
-        }
-        return value;
-      }
-      return value;
-    });
-    setCart(updatedCart);
+    // const updatedCart = cart.map((value) => {
+    //   if (value.id === product.id) {
+    //     if (value.qty > 1) {
+    //       return { ...value, qty: value.qty - 1 };
+    //     }
+    //     return value;
+    //   }
+    //   return value;
+    // });
+    // setCart(updatedCart);
+    dispatch(decreaseQty(product.id));
   }
 
   return (
