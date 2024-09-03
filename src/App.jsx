@@ -1,40 +1,13 @@
-import React, { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
-import AuthGuard from "./components/automaticRedirect/AuthGuard";
-import ProductsList from "./pages/ProductsList";
-import ProductDetails from "./pages/ProductDetails";
-import Home from "./pages/Home";
-import ContextDemo from "./components/contextDemo/ContextDemo";
-import PreventingRerenders from "./components/preventingRerenders/PreventingRerenders";
-import HOCDemo from "./components/hocDemo/HOCDemo";
-
-export const userContext = createContext();
+import UseReducerDemo from "./components/useReducerDemo/UseReducerDemo";
 
 function App() {
-  const [user, setUser] = useState(null);
   return (
-    <userContext.Provider value={{ user, setUser }}>
-      <BrowserRouter>
-        <Routes>
-          <Route>
-            <Route path="/" element={<HOCDemo />} />
-            <Route path="/" element={<Login />} />
-            <Route path="/products" element={<ProductsList />} />
-            <Route path="/details/:id" element={<ProductDetails />} />
-            <Route
-              path="/dashboard"
-              element={
-                <AuthGuard>
-                  <Dashboard />
-                </AuthGuard>
-              }
-            />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </userContext.Provider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<UseReducerDemo />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
