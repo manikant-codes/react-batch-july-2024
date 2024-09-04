@@ -6,6 +6,8 @@ import AddTransaction from "./pages/AddTransaction";
 import Dashboard from "./pages/Dashboard";
 import Reports from "./pages/Reports";
 import { customTheme } from "./theme/customTheme";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 export const transactionContext = createContext([]);
 
@@ -48,25 +50,27 @@ function App() {
   const [transactionsList, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <transactionContext.Provider
-      value={{
-        // transactions, setTransactions,
-        transactionsList,
-        dispatch,
-      }}
-    >
-      <Flowbite theme={{ theme: customTheme }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="/transaction/:id" element={<AddTransaction />} />
-              <Route path="/reports" element={<Reports />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </Flowbite>
-    </transactionContext.Provider>
+    <Provider store={store}>
+      <transactionContext.Provider
+        value={{
+          // transactions, setTransactions,
+          transactionsList,
+          dispatch,
+        }}
+      >
+        <Flowbite theme={{ theme: customTheme }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="/transaction/:id" element={<AddTransaction />} />
+                <Route path="/reports" element={<Reports />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </Flowbite>
+      </transactionContext.Provider>
+    </Provider>
   );
 }
 
