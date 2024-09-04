@@ -1,0 +1,33 @@
+- Redux ek global state management library hai JS applications ke liye.
+    - Global state yane aise state jo aap pure application me ek se jada jagahon pe use kar rahe hoo. Jaise ke cart, theme, user, etc
+    - Global state management yane inihi global state pe kaam karna, (unhe access aur change karna).
+    - JS library yane JS files ka collection.
+
+- Redux me 3 main entities/chize hai aur un 3 chizo ke saath 3 concepts hai. Isi pe pura redux pattern bana hai.
+    1. Store
+        - Sabhi global state ko store me store karenge / rakhenge.
+        - Ye store ek object hoota hai.
+    2. Reducer
+        - Store me rakhe gaye kisi bhi global state ko aap directly change nahi kar sakte hoo. To kaise change karenge?
+        - Store me rakhe gaye kisi bhi global state ko sirf reducer hi change karsakta hai.
+        - Reducer ek function hai, jise 2 arguments milte hai state aur action object.
+    3. Action
+        - Reducer ko state me changes karne ke liye ham action dispatch kar ke batate hai.
+        - Action ek object hai jisme 2 properties hoti hai.
+            1. type:
+                - Type se batate hai ke kon sa action/kaam karna hai.
+            2. payload:
+                - Agar us kaam ko karne ke liye koi value/s chahiye to aap unhe payload property me bhejte hoo.
+
+step 1.  Hame react application me redux use karne ke liye hame 2 libraries chahiye:
+            1. @reduxjs/toolkit
+                - Ye redux ko use karna aasaan banana hai.
+            2. react-redux
+                - Ye redux ko react me use karna aasaan banata hai useDispatch aur useSelector jaise hooks de kar.
+
+step 2. Install karne ke baad hame src folder me redux ka folder banana hai aur uske andar store.js file banani hai. Is store.js file ke andar ham redux ka store banayenge.
+
+step 3. 
+
+
+    
