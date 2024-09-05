@@ -1,21 +1,34 @@
-import { Card, Checkbox, Label, Radio, Select } from "flowbite-react";
+import { Label, Radio, Select } from "flowbite-react";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../components/home/ProductCard";
 import {
   getAllCategories,
-  getAllProducts,
+  // getAllProducts,
   getCategoryProducts,
 } from "../services/apiServices";
+import store from "../redux/store";
+import { getAllProducts } from "../redux/slices/productsSlice";
+
+const { getState } = store;
 
 function Home() {
-  const [products, setProducts] = useState(null);
+  // const [products, setProducts] = useState(null);
   const [categories, setCategories] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
+  const dispatch = useDispatch();
+
+  const products = useSelector((store) => {
+    return store.products.products;
+  });
 
   useEffect(() => {
-    getAllProducts(sortOrder).then((data) => {
-      setProducts(data);
-    });
+    // getAllProducts(sortOrder).then((data) => {
+    //   setProducts(data);
+    // });
+    if (!products) {
+      dispatch(getAllProducts(sortOrder));
+    }
   }, [sortOrder]);
 
   useEffect(() => {
@@ -26,13 +39,13 @@ function Home() {
 
   function handleChange(e) {
     if (e.target.value === "all") {
-      getAllProducts().then((data) => {
-        setProducts(data);
-      });
+      // getAllProducts().then((data) => {
+      //   setProducts(data);
+      // });
     } else {
-      getCategoryProducts(e.target.value).then((data) => {
-        setProducts(data);
-      });
+      // getCategoryProducts(e.target.value).then((data) => {
+      //   setProducts(data);
+      // });
     }
   }
 
@@ -41,7 +54,7 @@ function Home() {
   }
 
   if (!products) return null;
-  if (!categories) return null;
+  // if (!categories) return null;
 
   return (
     <div className="p-8">
@@ -65,7 +78,7 @@ function Home() {
               />
               <Label htmlFor={"all"}>{"all"}</Label>
             </li>
-            {categories.map((value) => {
+            {categories?.map((value) => {
               return (
                 <li key={value} className="flex items-center gap-2">
                   <Radio
