@@ -30,4 +30,22 @@
         - 1. Sare global state store me rakhe jayenge.
         - 2. Store ke states me directly changes nahi kiye jaa sakte hain. Jo bhi changes hain wo sirf reducer function kar sakta hain.
         - 3. Reducer function ko action dispatch kar ke batate hai ke konse state me kya changes karne hai.
+
+- createAsyncThunk
+    - Ek function hai jo aap ko thunk action creator / async action creator function return karta hai.
+        - Action creator function yane ek aisa function jo aap ko action object return kare. Ye action object sync logic wale reducers ke liye hota hai.
+        - Async action creators aise functions hai jo aap ko action object dete hai async logic wale reducers ke liye.
+
+    - createAsyncThunk 2 arguments leta hai:
+        1: Action type ki string
+        2. Payload creator function
+            - Is function ke andar se aap promise return karte hoo. Isi promise ka jo result hai wo payload banega.
+            - Isi promise pe se wo promise ke lifecyle states (pending, fulfilled, rejected) ke actions dispatch karta hai.
+
+App is dispatch karoge: dispatch(asynActionCreator())
+    - Ye badle me 2 aur dispatch karega payload creator se jo promise return hua hai uske par se.
+    - 1. pending wala
+    - 2. fullfilled / rejected wala
+
+    
         
