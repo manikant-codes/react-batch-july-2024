@@ -1,6 +1,7 @@
 import { Label, Radio, Select } from "flowbite-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ProductCard from "../components/home/ProductCard";
+import { useFetch } from "../hooks/useFetch";
 import {
   getAllCategories,
   getAllProducts,
@@ -8,38 +9,23 @@ import {
 } from "../services/apiServices";
 
 function Home({ cart, setCart }) {
-  const [products, setProducts] = useState(null);
-  const [categories, setCategories] = useState(null);
   const [sort, setSort] = useState("asc");
-  const [loadingProducts, setLoadingProducts] = useState(true);
-  const [errorProducts, setErrorProducts] = useState("");
-  const [loadingCategories, setLoadingCategories] = useState(true);
-  const [errorCategories, setErrorCategories] = useState("");
 
-  useEffect(() => {
-    getAllProducts(sort)
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((error) => {
-        setErrorProducts(error.message);
-      })
-      .finally(() => {
-        setLoadingProducts(false);
-      });
-  }, []);
+  const {
+    loading: loadingProducts,
+    data: products,
+    error: errorProducts,
+    setData: setProducts,
+  } = useFetch(() => {
+    return getAllProducts(sort);
+  }, [sort]);
 
-  useEffect(() => {
-    getAllCategories()
-      .then((data) => {
-        setCategories(data);
-      })
-      .catch((error) => {
-        setErrorCategories(error.message);
-      })
-      .finally(() => {
-        setLoadingCategories(false);
-      });
+  const {
+    loading: loadingCategories,
+    data: categories,
+    error: errorCategories,
+  } = useFetch(() => {
+    return getAllCategories();
   }, []);
 
   function handleChange(e) {
@@ -55,7 +41,6 @@ function Home({ cart, setCart }) {
   }
 
   function handleSortChange(e) {
-    console.log(e.target.value);
     setSort(e.target.value);
     setProducts(null);
   }
@@ -81,7 +66,7 @@ function Home({ cart, setCart }) {
             />
             <Label htmlFor={"all"}>{"all"}</Label>
           </li>
-          {categories.map((category) => {
+          {categories?.map((category) => {
             return (
               <li key={category} className="flex gap-2 items-center">
                 <Radio
@@ -106,7 +91,7 @@ function Home({ cart, setCart }) {
           </Select>
         </div>
         <div className="p-8 grid grid-cols-3 gap-4">
-          {products.map((product, index) => {
+          {products?.map((product, index) => {
             return (
               <ProductCard
                 key={product.id}

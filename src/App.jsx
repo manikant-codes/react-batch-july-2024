@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import { customTheme } from "./theme/customTheme";
+import Home from "./pages/Home";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -15,8 +16,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout cart={cart} setCart={setCart} />}>
-            <Route path="/" element={<UseRefDomDemo />} />
-            {/* <Route path="/" element={<Home cart={cart} setCart={setCart} />} /> */}
+            {/* <Route path="/" element={<UseRefDomDemo />} /> */}
+            <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
             <Route
               path="/product/:id"
               element={<ProductDetails cart={cart} setCart={setCart} />}
