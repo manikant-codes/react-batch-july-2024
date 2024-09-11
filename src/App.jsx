@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import { customTheme } from "./theme/customTheme";
 import Home from "./pages/Home";
+import UseContextDemo from "./components/demo/useContextDemo/UseContextDemo";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -16,14 +17,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout cart={cart} setCart={setCart} />}>
-            {/* <Route path="/" element={<UseRefDomDemo />} /> */}
-            <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
+            <Route path="/" element={<UseContextDemo />} />
+            {/* <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
             <Route
               path="/product/:id"
               element={<ProductDetails cart={cart} setCart={setCart} />}
             />
             <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
+            <Route path="contact" element={<Contact />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>
