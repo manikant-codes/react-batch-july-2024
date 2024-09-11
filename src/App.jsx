@@ -5,17 +5,19 @@ import Contact from "./pages/Contact";
 import Work from "./pages/Work";
 import Layout from "./layouts/Layout";
 import FAQs from "./pages/FAQs";
+import MyComponent from "./components/demo/classComponents/ClassComponentDemo";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
+          <Route index element={<MyComponent name="Ram" />} />
+          {/* <Route index element={<Home />} /> */}
+          {/* <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="work" element={<Work />} />
-          <Route path="faqs" element={<FAQs />} />
+          <Route path="faqs" element={<FAQs />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
