@@ -1,5 +1,5 @@
-import { TextInput } from "flowbite-react";
-import React, { useEffect, useRef, useState } from "react";
+import { TextInput } from "flowbite-react/components/TextInput";
+import { useEffect, useRef, useState } from "react";
 
 function UseRefDemo() {
   const [value, setValue] = useState("");

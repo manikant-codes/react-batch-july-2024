@@ -1,5 +1,5 @@
-import { Button } from "flowbite-react";
-import React, { useCallback, useMemo, useState } from "react";
+import { Button } from "flowbite-react/components/Button";
+import { useCallback, useMemo, useState } from "react";
 import { HiPlus, HiMinus } from "react-icons/hi";
 import TasksList from "./TasksList";
 

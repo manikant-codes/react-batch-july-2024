@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import TasksList from "./TasksList";
-import { Button } from "flowbite-react";
+import { Button } from "flowbite-react/components/Button";
 import { HiPlus, HiMinus } from "react-icons/hi";
 
 function MemoDemo() {

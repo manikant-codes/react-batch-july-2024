@@ -1,5 +1,7 @@
-import { Label, Radio, Select } from "flowbite-react";
-import React, { useContext, useState } from "react";
+import { Label } from "flowbite-react/components/Label";
+import { Radio } from "flowbite-react/components/Radio";
+import { Select } from "flowbite-react/components/Select";
+import { useContext, useState } from "react";
 import ProductCard from "../components/home/ProductCard";
 import { useFetch } from "../hooks/useFetch";
 import {

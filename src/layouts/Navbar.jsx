@@ -1,4 +1,4 @@
-import { Button } from "flowbite-react";
+import { Button } from "flowbite-react/components/Button";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CartDrawer from "../components/cart/CartDrawer";

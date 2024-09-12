@@ -1,5 +1,5 @@
-import { Button } from "flowbite-react";
-import React, { useContext } from "react";
+import { Button } from "flowbite-react/components/Button";
+import { useContext } from "react";
 import { HiOutlineChevronDoubleDown, HiPlus } from "react-icons/hi";
 import { useParams } from "react-router-dom";
 import { handleAddToCart } from "../components/home/ProductCard";
@@ -12,7 +12,7 @@ function ProductDetails() {
   const params = useParams();
   const { loading, data, error } = useFetch(() => {
     return getSingleProduct(params.id);
-  });
+  }, []);
 
   const { cart, setCart } = useContext(cartCtx);
 

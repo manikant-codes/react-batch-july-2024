@@ -1,4 +1,4 @@
-import { Drawer } from "flowbite-react";
+import { Drawer } from "flowbite-react/components/Drawer";
 import { HiShoppingCart } from "react-icons/hi";
 import React, { useContext } from "react";
 import CartItem from "./CartItem";

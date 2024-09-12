@@ -1,4 +1,5 @@
-import { Button, Card } from "flowbite-react";
+import { Button } from "flowbite-react/components/Button";
+import { Card } from "flowbite-react/components/Card";
 import React from "react";
 import Rating from "./Rating";
 import { useNavigate } from "react-router-dom";
