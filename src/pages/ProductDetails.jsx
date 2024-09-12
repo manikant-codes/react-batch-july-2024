@@ -1,17 +1,20 @@
 import { Button } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
 import { HiOutlineChevronDoubleDown, HiPlus } from "react-icons/hi";
 import { useParams } from "react-router-dom";
 import { handleAddToCart } from "../components/home/ProductCard";
 import Rating from "../components/home/Rating";
 import { useFetch } from "../hooks/useFetch";
 import { getSingleProduct } from "../services/apiServices";
+import { cartCtx } from "../App";
 
-function ProductDetails({ cart, setCart }) {
+function ProductDetails() {
   const params = useParams();
   const { loading, data, error } = useFetch(() => {
     return getSingleProduct(params.id);
   });
+
+  const { cart, setCart } = useContext(cartCtx);
 
   // const [loading, setLoading] = useState(true);
   // const [product, setProduct] = useState(null);

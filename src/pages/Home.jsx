@@ -1,21 +1,23 @@
 import { Label, Radio, Select } from "flowbite-react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ProductCard from "../components/home/ProductCard";
 import { useFetch } from "../hooks/useFetch";
 import {
   getAllCategories,
   getAllProducts,
-  getProductsOfCategory,
+  getProductsOfCategory
 } from "../services/apiServices";
+import { cartCtx } from "../App";
 
-function Home({ cart, setCart }) {
+function Home() {
   const [sort, setSort] = useState("asc");
+  const { cart, setCart } = useContext(cartCtx);
 
   const {
     loading: loadingProducts,
     data: products,
     error: errorProducts,
-    setData: setProducts,
+    setData: setProducts
   } = useFetch(() => {
     return getAllProducts(sort);
   }, [sort]);
@@ -23,7 +25,7 @@ function Home({ cart, setCart }) {
   const {
     loading: loadingCategories,
     data: categories,
-    error: errorCategories,
+    error: errorCategories
   } = useFetch(() => {
     return getAllCategories();
   }, []);
@@ -90,7 +92,7 @@ function Home({ cart, setCart }) {
             <option value="desc">Descending</option>
           </Select>
         </div>
-        <div className="p-8 grid grid-cols-3 gap-4">
+        <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {products?.map((product, index) => {
             return (
               <ProductCard

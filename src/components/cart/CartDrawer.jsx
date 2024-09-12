@@ -1,9 +1,11 @@
 import { Drawer } from "flowbite-react";
 import { HiShoppingCart } from "react-icons/hi";
-import React from "react";
+import React, { useContext } from "react";
 import CartItem from "./CartItem";
+import { cartCtx } from "../../App";
 
-function CartDrawer({ isOpen, handleClose, cart, setCart }) {
+function CartDrawer({ isOpen, handleClose }) {
+  const { cart, setCart } = useContext(cartCtx);
   return (
     <div>
       <Drawer open={isOpen} onClose={handleClose} position="right">

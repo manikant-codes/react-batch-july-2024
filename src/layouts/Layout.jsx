@@ -4,10 +4,10 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import MoveToTop from "../components/demo/MoveToTop";
 
-function Layout({ cart, setCart }) {
+function Layout() {
   return (
     <>
-      <Navbar cart={cart} setCart={setCart} />
+      <Navbar />
       <div className="p-8">
         <Outlet />
       </div>
