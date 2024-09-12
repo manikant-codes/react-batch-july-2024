@@ -6,13 +6,41 @@ import Work from "./pages/Work";
 import Layout from "./layouts/Layout";
 import FAQs from "./pages/FAQs";
 import MyComponent from "./components/demo/classComponents/ClassComponentDemo";
+import { useState } from "react";
 
 function App() {
+  const [show, setShow] = useState(true);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<MyComponent name="Ram" />} />
+          <Route
+            index
+            element={
+              show ? (
+                <>
+                  <button
+                    onClick={() => {
+                      setShow(!show);
+                    }}
+                  >
+                    Hide/Show
+                  </button>
+                  <MyComponent name="Ram" />
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      setShow(!show);
+                    }}
+                  >
+                    Hide/Show
+                  </button>
+                </>
+              )
+            }
+          />
           {/* <Route index element={<Home />} /> */}
           {/* <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
