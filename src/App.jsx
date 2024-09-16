@@ -1,12 +1,16 @@
 import { Flowbite } from "flowbite-react";
-import { createContext, useState } from "react";
+import { createContext, lazy, Suspense, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./layouts/MyLayout";
 import Home from "./pages/Home";
-import ProductDetails from "./pages/ProductDetails";
+// import ProductDetails from "./pages/ProductDetails";
 import { customTheme } from "./theme/customTheme";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+
+const ProductDetails = lazy(() => {
+  return import("./pages/ProductDetails");
+});
 
 export const cartContext = createContext();
 
@@ -21,7 +25,18 @@ function App() {
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
-                <Route path="/products/:id" element={<ProductDetails />} />
+                <Route
+                  path="/products/:id"
+                  element={
+                    <Suspense
+                      fallback={
+                        <p style={{ backgroundColor: "red" }}>Loading...</p>
+                      }
+                    >
+                      <ProductDetails />
+                    </Suspense>
+                  }
+                />
               </Route>
             </Routes>
           </BrowserRouter>
