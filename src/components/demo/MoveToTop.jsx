@@ -1,5 +1,5 @@
-import { Button } from "flowbite-react";
-import React, { useEffect, useState } from "react";
+import { Button } from "flowbite-react/components/Button";
+import { useEffect, useState } from "react";
 import { HiArrowUp } from "react-icons/hi";
 
 function MoveToTop() {

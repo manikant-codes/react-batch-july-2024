@@ -1,4 +1,4 @@
-import { Button } from "flowbite-react";
+import { Button } from "flowbite-react/components/Button";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CartDrawer from "../components/cart/CartDrawer";
@@ -6,10 +6,10 @@ import CartDrawer from "../components/cart/CartDrawer";
 const links = [
   { id: 1, name: "Home", link: "/" },
   { id: 2, name: "About", link: "/about" },
-  { id: 3, name: "Contact", link: "/contact" },
+  { id: 3, name: "Contact", link: "/contact" }
 ];
 
-function Navbar({ cart, setCart }) {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleToggle() {
@@ -29,16 +29,11 @@ function Navbar({ cart, setCart }) {
             );
           })}
           <li>
-            <Button onClick={handleToggle}>Add to Cart</Button>
+            <Button onClick={handleToggle}>Cart</Button>
           </li>
         </ul>
       </nav>
-      <CartDrawer
-        isOpen={isOpen}
-        handleClose={handleToggle}
-        cart={cart}
-        setCart={setCart}
-      />
+      <CartDrawer isOpen={isOpen} handleClose={handleToggle} />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Button } from "flowbite-react";
+import { Button } from "flowbite-react/components/Button";
 import React from "react";
 import { HiMinus, HiPlus, HiTrash } from "react-icons/hi";
 

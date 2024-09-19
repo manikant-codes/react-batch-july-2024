@@ -1,4 +1,5 @@
-import { Button, Flowbite } from "flowbite-react";
+import { Flowbite } from "flowbite-react/components/Flowbite";
+import { Button } from "flowbite-react/components/Button";
 import React from "react";
 
 const customTheme = {
@@ -30,7 +31,7 @@ const customTheme = {
       red: "border border-red-300 bg-white text-red-900 focus:ring-4 focus:ring-red-300 enabled:hover:bg-red-100 dark:border-red-600 dark:bg-red-600 dark:text-white dark:focus:ring-red-700 dark:enabled:hover:border-red-700 dark:enabled:hover:bg-red-700",
       teal: "border border-teal-300 bg-white text-teal-900 focus:ring-4 focus:ring-teal-300 enabled:hover:bg-teal-100 dark:border-teal-600 dark:bg-teal-600 dark:text-white dark:focus:ring-teal-700 dark:enabled:hover:border-teal-700 dark:enabled:hover:bg-teal-700",
       yellow:
-        "border border-yellow-300 bg-white text-yellow-900 focus:ring-4 focus:ring-yellow-300 enabled:hover:bg-yellow-100 dark:border-yellow-600 dark:bg-yellow-600 dark:text-white dark:focus:ring-yellow-700 dark:enabled:hover:border-yellow-700 dark:enabled:hover:bg-yellow-700",
+        "border border-yellow-300 bg-white text-yellow-900 focus:ring-4 focus:ring-yellow-300 enabled:hover:bg-yellow-100 dark:border-yellow-600 dark:bg-yellow-600 dark:text-white dark:focus:ring-yellow-700 dark:enabled:hover:border-yellow-700 dark:enabled:hover:bg-yellow-700"
     },
     disabled: "cursor-not-allowed opacity-50",
     isProcessing: "cursor-wait",
@@ -40,7 +41,7 @@ const customTheme = {
       sm: "left-3",
       md: "left-4",
       lg: "left-5",
-      xl: "left-6",
+      xl: "left-6"
     },
     gradient: {
       cyan: "bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 text-white focus:ring-4 focus:ring-cyan-300 enabled:hover:bg-gradient-to-br dark:focus:ring-cyan-800",
@@ -53,7 +54,7 @@ const customTheme = {
         "bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white focus:ring-4 focus:ring-purple-300 enabled:hover:bg-gradient-to-br dark:focus:ring-purple-800",
       success:
         "bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white focus:ring-4 focus:ring-green-300 enabled:hover:bg-gradient-to-br dark:focus:ring-green-800",
-      teal: "bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 text-white focus:ring-4 focus:ring-teal-300 enabled:hover:bg-gradient-to-br dark:focus:ring-teal-800",
+      teal: "bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 text-white focus:ring-4 focus:ring-teal-300 enabled:hover:bg-gradient-to-br dark:focus:ring-teal-800"
     },
     gradientDuoTone: {
       cyanToBlue:
@@ -69,7 +70,7 @@ const customTheme = {
       redToYellow:
         "bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 text-gray-900 focus:ring-4 focus:ring-red-100 enabled:hover:bg-gradient-to-bl dark:focus:ring-red-400",
       tealToLime:
-        "bg-gradient-to-r from-teal-200 to-lime-200 text-gray-900 focus:ring-4 focus:ring-lime-200 enabled:hover:bg-gradient-to-l enabled:hover:from-teal-200 enabled:hover:to-lime-200 enabled:hover:text-gray-900 dark:focus:ring-teal-700",
+        "bg-gradient-to-r from-teal-200 to-lime-200 text-gray-900 focus:ring-4 focus:ring-lime-200 enabled:hover:bg-gradient-to-l enabled:hover:from-teal-200 enabled:hover:to-lime-200 enabled:hover:text-gray-900 dark:focus:ring-teal-700"
     },
     inner: {
       base: "flex items-stretch transition-all duration-200",
@@ -77,7 +78,7 @@ const customTheme = {
         none: "",
         start: "rounded-r-none",
         middle: "rounded-none",
-        end: "rounded-l-none",
+        end: "rounded-l-none"
       },
       outline: "border border-transparent",
       isProcessingPadding: {
@@ -85,8 +86,8 @@ const customTheme = {
         sm: "pl-10",
         md: "pl-12",
         lg: "pl-16",
-        xl: "pl-20",
-      },
+        xl: "pl-20"
+      }
     },
     label:
       "ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cyan-200 text-xs font-semibold text-cyan-800",
@@ -94,27 +95,27 @@ const customTheme = {
       color: {
         gray: "border border-gray-900 dark:border-white",
         default: "border-0",
-        light: "",
+        light: ""
       },
       off: "",
       on: "flex w-full justify-center bg-white text-gray-900 transition-all duration-75 ease-in group-enabled:group-hover:bg-opacity-0 group-enabled:group-hover:text-inherit dark:bg-gray-900 dark:text-white",
       pill: {
         off: "rounded-md",
-        on: "rounded-full",
-      },
+        on: "rounded-full"
+      }
     },
     pill: {
       off: "rounded-lg",
-      on: "rounded-full",
+      on: "rounded-full"
     },
     size: {
       xs: "px-2 py-1 text-xs",
       sm: "px-3 py-1.5 text-sm",
       md: "px-4 py-2 text-sm",
       lg: "px-5 py-2.5 text-base",
-      xl: "px-6 py-3 text-base",
-    },
-  },
+      xl: "px-6 py-3 text-base"
+    }
+  }
 };
 
 function MyButton(props) {
