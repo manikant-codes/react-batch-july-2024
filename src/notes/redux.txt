@@ -1,0 +1,12 @@
+Redux ek global state management library hai JS applications ke liye.
+
+Global state yane aise states jo aapke aplication me kai jagah pe use hoo rahe hoon.
+
+Redux Pattern
+Store: Wo ek jagah jaha pe aap apna sara global state rakho. Ye ek object hoota hai.
+Reducer: Ye ek function hota hai jinke madad se aap store me rakhe state ko change karte hoo.
+Actions: Ye objects hote hain jinke madad se aap reducer ko store me kuch change karne ka kehte hoo.
+
+const state = useSelector((store) => {
+    return store.slice.state
+});
